@@ -27,3 +27,20 @@ App Engineはサービスに該当し、よく見る **app.yaml** は::
 のような例なので、1つしか作れないように見えるが、
 実際はこれは **service** が省略されて **default** になっているだけで、
 自分で **service** キーを設定すれば複数のApp Engineサービスを作ることができる。
+
+app.yamlのhandlersマッチング
+----------------------------
+
+**app.yaml** の ``handlers`` は、書いた順番に上からマッチしていく。
+なので例えば::
+
+	handlers:
+	  - url: /.*
+	    script: _go_app
+	    login: required
+	  - url: /_ah/queue/.*
+	    script: _go_app
+	    login: admin
+
+のように書くと、先に ``/.*`` が評価されて、``/_ah/queue/.*`` に届かない。
+広い範囲にマッチするルールは、下に書くように注意する。
