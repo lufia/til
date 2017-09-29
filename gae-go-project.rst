@@ -1,6 +1,8 @@
 Google App Engine/Goのプロジェクト
 ==================================
 
+.. highlight:: yaml
+
 GAE/Goのコーディング以外に関する情報。
 
 1つのプロジェクトで複数のApp Engineを使う
