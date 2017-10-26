@@ -3,6 +3,15 @@ systemdユニットの設定方法
 
 .. highlight:: ini
 
+ユニットの設定を検証する
+------------------------
+
+以下のコマンドで記述間違いがあるかを確認する。
+
+.. code-block:: console
+
+	$ systemd-analyze verify docker.service
+
 空の変数を空文字列として扱う
 ----------------------------
 
