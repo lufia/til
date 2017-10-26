@@ -41,7 +41,7 @@ DockerのログをGCPへ送る
 
 とりあえず以下の設定で動作した。
 
-/etc/docker/daemon.json (なければ作成)
+/etc/docker/daemon.json:
 
 .. code-block:: json
 
@@ -57,3 +57,5 @@ DockerのログをGCPへ送る
 
 	[Service]
 	Environment="GOOGLE_APPLICATION_CREDENTIALS=/etc/docker/credential.json"
+
+* `GCP外のホストからDockerコンテナのログをStackdriver Loggingに送る <https://www.xmisao.com/2017/04/23/send-docker-container-logs-to-stackdriver-logging-from-the-outside-of-gcp.html>`_
