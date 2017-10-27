@@ -12,6 +12,32 @@ systemdユニットの設定方法
 
 	$ systemd-analyze verify docker.service
 
+IPルーティング設定
+------------------
+
+ネットワークの設定は */etc/systemd/network/* で行う。
+以下は固定IPアドレスとルーティングをセットした例::
+
+	[Match]
+	Name=eth0
+
+	[Network]
+	Address=192.168.1.3/24
+	Gateway=192.168.1.1
+	DNS=192.168.1.1
+	DNS=192.168.1.2
+
+	[Route]
+	Gateway=192.168.1.123
+	Destination=10.1.2.0/24
+
+設定が終わったら再起動するか、ネットワークを再スタートする。
+
+.. code-block:: console
+
+	# systemctl daemon-reload
+	# systemctl restart systemd-networkd
+
 空の変数を空文字列として扱う
 ----------------------------
 
