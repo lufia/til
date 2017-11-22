@@ -62,3 +62,36 @@ git.yml::
 	- git_config: name=user.name scope=global value={{ user }}
 	  become: yes
 	  become_user: "{{ user }}"
+
+踏み台経由で実行したい
+----------------------
+
+踏み台を経由して、プライベートIPアドレスなホストを構成する場合、
+``ssh -F`` と *ssh_config* で実行する方法はよく見かける。
+だけどAnsibleのインベントリと *ssh_config* の両方をメンテするのは面倒なので、
+使わないような方法を調べた。
+
+.. code-block:: ini
+
+ansible.cfg::
+
+	[defaults]
+	inventory=./hosts
+	remote_user=lufia
+	private_key_file=~/.ssh/id_rsa
+
+	[ssh_connection]
+	ssh_args=-o 'ProxyCommand=ssh -W %h:%p -i ~/.ssh/id_rsa -l lufia proxy.example.net'
+
+.. code-block:: ini
+
+hosts::
+
+	[servers]
+	192.168.1.100
+
+.. code-block:: console
+
+これで、以下のようにすると確認ができた::
+
+	$ ansible servers -m ping -v
