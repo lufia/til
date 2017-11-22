@@ -40,7 +40,7 @@ Ansibleはタスクに対して ``become`` できるので、ループを使お�
 
 この場合、**ansible.cfg** に ``pipelining=True`` すると良い。
 
-	.. code-block:: ini
+.. code-block:: ini
 
 	[ssh_connection]
 	pipelining=True
