@@ -61,3 +61,20 @@ PowerShellオブジェクトをJSONに変換する
 ``-Depth`` を使うと任意の深さまで変換される::
 
 	ConvertTo-Json -Depth 3 $p
+
+JSONをPOSTすると文字化けする
+----------------------------
+
+以下のコードでは、日本語文字を含む場合に文字化けする::
+
+	$body = @{name="テスト"}
+	$json = ConvertTo-Json $body
+	Invoke-RestMethod -Method POST -Uri http://localhost:8080/ -Body $json
+	# {"name":"???"}のようになる
+
+正しくはこちら::
+
+	$body = @{name="テスト"}
+	$json = ConvertTo-Json $body
+	$bytes = [System.Text.Encoding]::UTF8.GetBytes($json)
+	Invoke-RestMethod -Method POST -Uri http://localhost:8080/ -Body $bytes
