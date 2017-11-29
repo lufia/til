@@ -3,6 +3,27 @@ Goにコントリビュートする
 
 基本的には `Contribution Guide <https://golang.org/doc/contribute.html>`_ の通りに進めていけばできる。
 
+用語
+----
+
+Gerritの用語らしい。
+
+CLs
+	change lists
+
+	https://godoc.org/golang.org/x/build/cmd/cl
+CR
+	code review
+
+DNR
+	do not review
+
+RT
+	run trybot
+
+TR
+	trybot result
+
 ソースコードはgo getで取得する
 ------------------------------
 
