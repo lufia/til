@@ -1,10 +1,53 @@
+========================
 Ansible playbookの書き方
 ========================
 
 .. highlight:: yaml
 
+Deprecatedなパラメータ
+======================
+
+Ansible 2.xで色々とDeprecated扱いになった。
+
+ansible.cfgの ``ask_sudo_pass``
+-------------------------------
+
+``ask_sudo_pass`` は ``become_ask_pass`` に変更する::
+
+	[privilege_escalation]
+	become_ask_pass=True
+
+``[defaults]`` から ``[privilege_escalation]`` に変わるので注意。
+
+ansible.cfgの ``hostfile``
+---------------------------
+
+``inventory`` に変更する::
+
+	[defaults]
+	inventory=./hosts
+
+タスクの ``include``
+--------------------
+
+``import_tasks`` に変更する::
+
+	- tasks:
+	  - import_tasks: git.yml
+
+``sudo`` 関連
+-------------
+
+だいたい ``become`` に置き換え::
+
+	- hosts: all
+	  become: true
+	  become_user: root
+	  roles:
+	    ...
+
 ローカルでコマンドを実行したい
-------------------------------
+==============================
 
 Playbookの途中で、ローカルの実行結果を使いたい場合、
 ``local_action`` を使えばコマンドを走らせることができる。
@@ -22,7 +65,7 @@ Playbookの途中で、ローカルの実行結果を使いたい場合、
 	    delegate_to: server
 
 ループで複数ユーザにモジュールを実行したい
-------------------------------------------
+==========================================
 
 Ansibleはタスクに対して ``become`` できるので、ループを使おうとすると::
 
@@ -64,7 +107,7 @@ git.yml::
 	  become_user: "{{ user }}"
 
 踏み台経由で実行したい
-----------------------
+======================
 
 踏み台を経由して、プライベートIPアドレスなホストを構成する場合、
 ``ssh -F`` と *ssh_config* で実行する方法はよく見かける。
