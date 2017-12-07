@@ -124,7 +124,14 @@ ansible.cfg::
 	private_key_file=~/.ssh/id_rsa
 
 	[ssh_connection]
-	ssh_args=-o 'ProxyCommand=ssh -W %h:%p -i ~/.ssh/id_rsa -l lufia proxy.example.net'
+	ssh_args=-o 'ProxyCommand=ssh -W %h:%p -i ~/.ssh/id_rsa -l lufia proxy.example.net' \
+		-o ControlMaster=no -o ControlPersist=no
+	control_path=/dev/null
+
+``ControlMaster=no`` と ``ControlPersist=no`` はあったほうが良い。
+同じ名前のホストだけど踏み台が違う(インスタンスは違う)場合に接続が使い回されるように見える。
+例えば、**proxyA** 経由で *host1* にアクセスした後、**proxyB** 経由で *host1* にアクセスすると
+**proxyB** 側が更新済み扱いになる。(同じ名前なのでSSH接続が使い回される？)
 
 .. code-block:: ini
 
