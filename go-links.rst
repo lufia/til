@@ -7,6 +7,11 @@ Goの参考リンク
 
 * `[翻訳]Go言語の構文がC言語から大胆に変わった理由 <https://qiita.com/hachi8833/items/7c43a93130fcce3e308f>`_
 
+コンパイラ
+==========
+
+* `GoのSSA最適化制御オプション <https://qiita.com/tooru/items/a55bcdac0500d9a93f39>`_
+
 パッケージ
 ==========
 
