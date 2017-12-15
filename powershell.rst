@@ -3,6 +3,16 @@ PowerShell
 
 .. highlight:: powershell
 
+エンコーディングをUTF-8にする
+-----------------------------
+
+デフォルトでは、PowerShellの出力をUnixコマンドにパイプすると、
+日本語文字が文字化けするし、逆も化ける。
+これはデフォルトのエンコーディングがUTF-8ではないためなので、
+エンコーディングを変更すればいい::
+
+	$OutputEncoding = [System.Text.Encoding]::UTF8
+
 引数を受け取る
 --------------
 
