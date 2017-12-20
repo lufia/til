@@ -41,5 +41,23 @@ HTTP
 GAE/Go
 ======
 
+プロジェクト
+------------
+
 * `実践的なGAE/Goの構成について <https://qiita.com/koki_cheese/items/216fe73caf958db34aa2>`_
+* `再考 GAE/Goのプロジェクト構成 <https://qiita.com/ryutah/items/eff6a044c81c5ba109d0>`_
+
+データストア
+------------
+
 * `GAE/Goで本番のDatastoreをローカル環境に持ってくる 2016 <https://qiita.com/aql/items/9754b23a7d23544b1c10>`_
+
+タスクキュー
+------------
+
+* `GAEのTaskQueue(PushQueue)で、delayパッケージとHTTPの受け口(handler)を定義するのは何が違うのか? <http://pospome.hatenablog.com/entry/2017/12/17/182509>`_
+
+その他
+------
+
+* `GAE/Goのurlfetchのタイムアウトを設定する <http://pospome.hatenablog.com/entry/2017/12/17/112144>`_
