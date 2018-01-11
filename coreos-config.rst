@@ -59,3 +59,11 @@ DockerのログをGCPへ送る
 	Environment="GOOGLE_APPLICATION_CREDENTIALS=/etc/docker/credential.json"
 
 * `GCP外のホストからDockerコンテナのログをStackdriver Loggingに送る <https://www.xmisao.com/2017/04/23/send-docker-container-logs-to-stackdriver-logging-from-the-outside-of-gcp.html>`_
+
+ディスク容量を増やす
+--------------------
+
+途中でディスク容量を拡張したい場合、
+``qemu-img resize`` などでディスクを拡張してOSを再起動すれば良い。
+
+* `Adding disk space <https://coreos.com/os/docs/latest/adding-disk-space.html>`_
