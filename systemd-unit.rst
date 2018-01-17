@@ -79,3 +79,15 @@ IPルーティング設定
 	ExecStartPost=/bin/systemctl reload httpd.service
 
 * `cronの代わりにsystemdのtimerを使う <http://blog.n-z.jp/blog/2017-06-04-cron-systemd-timer.html>`_
+
+設定の上書き
+------------
+
+*/usr/lib/systemd/{system,network}/unitname* 以下のユニット設定を変更する場合、
+*/etc/systemd/{system,network}/unitname.d* に上書きしたい差分を書けばいい。
+
+上書きファイル作成コマンドも用意されている。
+
+.. code-block:: console
+
+	$ systemctl edit unitname
