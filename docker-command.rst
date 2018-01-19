@@ -3,6 +3,15 @@ Dockerコマンド
 
 .. highlight:: console
 
+``-v(--volume)`` と ``--mount`` の違い
+--------------------------------------
+
+どちらもマウントするためのオプションだけど、
+``--mount`` の方が、ファイルをマウント可能など色々拡張されている。
+今なら ``--mount`` を使ったほうがいい。
+
+* `Use bind mounts <https://docs.docker.com/engine/admin/volumes/bind-mounts/>`_
+
 CPUとメモリの状況を調べる
 -------------------------
 
