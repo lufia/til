@@ -76,3 +76,30 @@ DockerのログをGCPへ送る
 ``qemu-img resize`` などでディスクを拡張してOSを再起動すれば良い。
 
 * `Adding disk space <https://coreos.com/os/docs/latest/adding-disk-space.html>`_
+
+ディスクを追加する
+------------------
+
+systemdでマウントすれば良いらしい。以下は */dev/sdb* の場合::
+
+	$ sudo mkfs.ext4
+	$ sudo mkdir /mnt/data
+	$ cat /etc/systemd/system/mnt-data.mount
+	[Unit]
+	Before=local-fs.target
+	
+	[Mount]
+	What=/dev/sdb
+	Where=/mnt/data
+	Type=ext4
+	
+	[Install]
+	WantedBy=local-fs.target
+	$ sudo systemctl daemon-reload
+	$ sudo systemctl start mnt-data.mount
+	$ sudo systemctl enable mnt-data.mount
+
+これでContainer Linuxから認識できたので、あとはコンテナから参照して使う。
+おそらく `local-persistドライバ <https://github.com/CWSpear/local-persist>`_ を使うと便利。
+
+* `Mounting storage <https://coreos.com/os/docs/latest/mounting-storage.html>`_
