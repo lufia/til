@@ -36,6 +36,15 @@ Cloud Configと違って起動時に上書きされないので、必要なフ�
 
 * `What is Ignition? <https://coreos.com/ignition/docs/latest/what-is-ignition.html>`_
 
+Container Linuxは、*/dev/sda3* と */dev/sda4* のどちらかを */usr* にマウントする。
+アップデートする際には、使われていない方のパーティションを更新し、*/usr* を切り替えて再起動する。
+パーティションの切り替えは */usr* だけなので、*/etc* や */var* などは残る。
+そのため、一般的なLinuxサーバと同じように手で更新してもいいし、
+Ansibleなどの構成管理ツールを使って管理してもいい。
+
+* `Performing manual CoreOS Container Linux rollbacks <https://coreos.com/os/docs/latest/manual-rollbacks.html>`_
+* `Managing CoreOS with Ansible <https://coreos.com/blog/managing-coreos-with-ansible.html>`_
+
 DockerのログをGCPへ送る
 -----------------------
 
