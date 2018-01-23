@@ -54,3 +54,48 @@ GCEでPlan 9を使うときは通常環境と異なり以下の制限がある�
 * カーネルにはVirtioドライバが必要
 * 起動ディスクは */dev/sd01* にアタッチされる
 * *plan9.ini* にコンソールの設定が必要
+
+Gitを使う
+---------
+
+.. highlight:: console
+
+* `Git wrapper <http://www.9legacy.org/9legacy/tools/git>`_
+* `dgit <https://github.com/driusan/dgit>`_
+
+Git wrapperはそのままダウンロードして/に *bind* すればいい::
+
+	% hget http://www.9legacy.org/9legacy/tools/git >$home/bin/rc/git
+	% bind -a $home/bin/rc /bin    # 必要なら
+
+簡単だけれど履歴などが取れないので、*dgit* の方が便利::
+
+	% GOPATH=$home
+	% mkdir -p $GOPATH/src/github.com/driusan
+	% cd $GOPATH/src/github.com/driusan
+	% git clone https://github.com/driusan/dgit
+	% go get https://github.com/driusan/dgit
+
+*dgit* を使うためには最低でも以下の設定が必要だった。
+まずは *$home/.gitconfig* に *user.name* と *user.email* を追加::
+
+	% git config user.name lufia
+	% git config user.email lufia@lufia.org
+	% cat $home/.gitconfig
+	[user]
+		name = lufia
+		email = lufia@lufia.org
+
+次に、GitHubへ ``go get`` でアクセスするために証明書を更新::
+
+	% hget http://www.9legacy.org/9legacy/patch/ca.diff >/tmp/ca.diff
+	% cd /
+	% ape/patch -p1 </tmp/ca.diff
+
+これで ``go get`` できる::
+
+	% GOPATH=$home
+	% go get github.com/lufia/qsh
+
+標準実装と異なり、途中でエラーになってもファイルは残るので、
+自分で不要なファイルを削除する必要がある。
