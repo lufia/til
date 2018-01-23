@@ -6,3 +6,31 @@ Go関係の便利ツールなど
 
 * `quicktype <https://quicktype.io/>`_
 * `JSON-to-Go <https://mholt.github.io/json-to-go/>`_
+
+SSHで ``go get`` する
+---------------------
+
+.. code-block:: console
+
+以下のコマンドで、*https* アクセスした時に *ssh* へ切り替える::
+
+	$ git config --global url.git@github.com:.insteadOf https://github.com/
+
+.. code-block:: ini
+
+これで、*~/.gitconfig* には以下のようなエントリが追加される::
+
+	[url "git@github.com:"]
+		insteadOf = https://github.com/
+
+プライベートリポジトリを ``go get`` する
+----------------------------------------
+
+色々やってみたけどできなかった::
+
+	$ git config --global http.extraheader 'PRIVATE-TOKEN: xxxxxxx'
+	$ git config --global git@github.com:.insteadOf https://github.com/
+	$ go get xxx # error
+	$ go get xxx.git # ok
+
+リポジトリ名に *.git* つければ動くけど、なんだろう。
