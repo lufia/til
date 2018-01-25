@@ -34,3 +34,8 @@ SSHで ``go get`` する
 	$ go get xxx.git # ok
 
 リポジトリ名に *.git* つければ動くけど、なんだろう。
+
+スライドを作成する
+------------------
+
+* `Presentでスライドを作ろう <https://www.slideshare.net/YutakaKato/present-75952579>`_
