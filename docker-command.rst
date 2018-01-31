@@ -101,3 +101,13 @@ Docker-composeで複数インスタンス
 ``scale`` オプションを使う::
 
 	$ docker-compose scale (イメージ名)=(インスタンス数)
+
+Docker service
+--------------
+
+使いどころはよくわからないけど、``docker run`` 相当のことができそう。
+
+``docker-compose`` は ``docker stack deploy`` に
+------------------------------------------------
+
+* `Docker Compose入門～今日から始めるComposeの初歩からswarm mode対応まで <https://www.slideshare.net/zembutsu/docker-compose-and-swarm-mode-orchestration>`_
