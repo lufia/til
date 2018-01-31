@@ -2,15 +2,32 @@
 Goの参考リンク
 ==============
 
+AA
+==
+
+Gopher::
+
+	ʕ ◔ϖ◔ʔ
+
 言語仕様
 ========
 
 * `[翻訳]Go言語の構文がC言語から大胆に変わった理由 <https://qiita.com/hachi8833/items/7c43a93130fcce3e308f>`_
+* `Issue 9 <https://github.com/golang/go/issues/9>`_
 
 コンパイラ
 ==========
 
 * `GoのSSA最適化制御オプション <https://qiita.com/tooru/items/a55bcdac0500d9a93f39>`_
+* `GoのInterfaceとは何者なのか <http://niconegoto.hatenadiary.jp/entry/2017/12/03/222922>`_
+
+ツール類
+========
+
+* `go tool trace <https://making.pusher.com/go-tool-trace/>`_
+* dep
+* delve デバッガ
+* `Go fonts <https://blog.golang.org/go-fonts>`_
 
 パッケージ
 ==========
@@ -29,14 +46,52 @@ Goの参考リンク
 HTTP
 ----
 
+* `The complete guide to Go net/http timeouts <https://blog.cloudflare.com/the-complete-guide-to-golang-net-http-timeouts/>`_
 * `Goでnet/httpを使う時のこまごまとした注意 <https://qiita.com/ono_matope/items/60e96c01b43c64ed1d18>`_
 * `Goのリバースプロキシーでレスポンスを書き換える <https://qiita.com/shibukawa/items/55f64d81ea6ac802dd15>`_
 
 コードの書き方
 ==============
 
+良いコード
+----------
+
+* `understanding nil <https://speakerdeck.com/campoy/understanding-nil>`_
+* `understanding the interface <https://speakerdeck.com/campoy/understanding-the-interface>`_
+* `なぜContextを構造体に含めてはいけないのか、またそれが許される状況について <https://qiita.com/sonatard/items/d97279086b24e588a82d>`_
+* `プロダクション環境でのベストプラクティス <https://qiita.com/umisama/items/c2a8db6c23db18dd5437>`_
+* `6年間におけるGoのベストプラクティス <http://postd.cc/go-best-practices-2016/>`_
+* `標準的なパッケージのレイアウト <http://allishackedoff.hatenablog.com/entry/2016/08/23/015016>`_
+* `Building and using coverage-instrumented programs with Go <http://damien.lespiau.name/2017/05/building-and-using-coverage.html>`_
+* `Don't just check errors, handle them gracefully <https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully>`_
+
+コマンドの終了コードは、
+
+0
+	正常終了
+
+1
+	実行エラー
+
+2
+	間違った使い方や-helpなど、コマンド未実行でのエラー
+
+128以上
+	シグナルでの終了とか
+
+* `Exit Codes With Special Meanings <http://tldp.org/LDP/abs/html/exitcodes.html>`_
+
+パターン
+--------
+
+* `Errors are values <https://blog.golang.org/errors-are-values>`_
 * `Go言語のFunctional Option Pattern <https://qiita.com/weloan/items/56f1c7792088b5ede136>`_
+
+考え方
+------
+
 * `loggingについて話そう <https://qiita.com/methane/items/cedbf546ae2db8a63c3d>`_
+* `C言語プログラミングの覚え書き(改訳) <http://d.hatena.ne.jp/takeda25/20141012/1413116114>`_
 
 GAE/Go
 ======
@@ -61,3 +116,10 @@ GAE/Go
 ------
 
 * `GAE/Goのurlfetchのタイムアウトを設定する <http://pospome.hatenablog.com/entry/2017/12/17/112144>`_
+
+情報収集
+========
+
+* `The Go Blog <https://blog.glang.org/>`_
+* `GopherAcademy <https://blog.gopheracademy.com/>`_
+* `goz Go's News <http://goz.hexacosa.net/>`_
