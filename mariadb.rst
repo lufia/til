@@ -30,3 +30,54 @@ DBドライバ固有のパラメータは ``sql.Open`` 接続時に使われる�
 内部的にマップされているので、``timezone=Etc/UTC`` が使えるのではないかと思う。
 
 * `Date/Timeキーワード <https://www.postgresql.org/docs/current/static/datetime-keywords.html>`_
+
+検証してみた結果 ``timezone`` パラメータは反映される。
+
+.. code-block:: go
+
+検証コード::
+
+	package main
+	
+	import (
+		"database/sql"
+		"flag"
+		"fmt"
+		"log"
+		"strings"
+		"time"
+	
+		_ "github.com/lib/pq"
+	)
+	
+	var (
+		zflag = flag.String("z", "", "timezone")
+	)
+	
+	func main() {
+		flag.Parse()
+	
+		params := []string{
+			"user=postgres",
+			"password=xxx",
+			"host=localhost",
+			"port=5432",
+			"dbname=postgres",
+			"sslmode=disable",
+		}
+		if *zflag != "" {
+			params = append(params, fmt.Sprintf("timezone='%s'", *zflag))
+		}
+		dsn := strings.Join(params, " ")
+		db, err := sql.Open("postgres", dsn)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer db.Close()
+	
+		var t time.Time
+		if err := db.QueryRow("select now()").Scan(&t); err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(t)
+	}
