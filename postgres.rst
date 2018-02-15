@@ -39,3 +39,25 @@ PostgreSQLメモ
 また、*~/.pgpass* のパーミッションは600のみ許可。
 
 * `psqlにてパスワードを省略する方法 <https://kaede.jp/2015/10/27002723.html>`_
+
+``psql`` の出力をページングさせない
+-----------------------------------
+
+デフォルトではページングが入るので、スクリプトの途中で使うのが難しい。
+ページャを使わないために、インタラクティブな場合は ``\pset`` を使う::
+
+	\pset pager off
+
+.. code-block:: console
+
+スクリプトの途中で ``psql -c`` と一緒に使う場合は *-P* オプションを使う::
+
+	$ psql -P pager=off -c 'select now()'
+
+``\pset`` には例えば以下のようなパラメータが存在する。
+
+* border
+* expanded
+* fieldsep
+* recordsep
+* tuples_only
