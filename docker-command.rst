@@ -111,3 +111,26 @@ Docker service
 ------------------------------------------------
 
 * `Docker Compose入門～今日から始めるComposeの初歩からswarm mode対応まで <https://www.slideshare.net/zembutsu/docker-compose-and-swarm-mode-orchestration>`_
+
+不要なオブジェクトを削除する
+----------------------------
+
+未使用のイメージを削除::
+
+	$ docker image prune
+
+未使用のボリュームを削除::
+
+	$ docker volume prune
+
+未使用のネットワークを削除::
+
+	$ docker network prune
+
+未使用のコンテナを削除::
+
+	$ docker container prune
+
+上記全てを一括で:;
+
+	$ docker system prune
