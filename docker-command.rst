@@ -131,6 +131,6 @@ Docker service
 
 	$ docker container prune
 
-上記全てを一括で:;
+上記全てを一括で::
 
 	$ docker system prune
