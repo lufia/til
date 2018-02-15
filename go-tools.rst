@@ -3,6 +3,9 @@ Go関係の便利ツールなど
 ======================
 
 * `Go Tools <https://gotools.org/>`_
+* `Go Search <http://go-search.org/>`_
+
+JSON生成
 
 * `quicktype <https://quicktype.io/>`_
 * `JSON-to-Go <https://mholt.github.io/json-to-go/>`_
