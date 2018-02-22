@@ -25,9 +25,14 @@ Gopher::
 ========
 
 * `go tool trace <https://making.pusher.com/go-tool-trace/>`_
-* dep
+* `x/tools <https://godoc.org/golang.org/x/tools/cmd/>`_
+* `dep <https://godoc.org/github.com/golang/dep/cmd/dep>`_
+* `golint <https://github.com/golang/lint>`_
+* `goversion <https://godoc.org/rsc.io/goversion>`_
 * delve デバッガ
 * `Go fonts <https://blog.golang.org/go-fonts>`_
+* `vgo <https://godoc.org/golang.org/x/vgo>`_
+	* `Go & Versioning <https://research.swtch.com/vgo>`_
 
 パッケージ
 ==========
