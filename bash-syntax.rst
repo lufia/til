@@ -2,6 +2,19 @@
 bashの文法
 ==========
 
+.. highlight:: console
+
+Tips
+====
+
+パイプの左側がエラーなら全体をエラーとする
+------------------------------------------
+
+``pipefail`` をセットしておく::
+
+	$ set -o pipefail
+	$ curl http://example.com/notfound.json | jq .
+
 組み込みコマンド
 ================
 
