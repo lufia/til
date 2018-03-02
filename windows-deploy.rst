@@ -5,6 +5,13 @@ Visual Studioでデプロイ
 環境構築
 ========
 
+Windows Server 2016でCAPI2 513エラーが記録される
+------------------------------------------------
+
+Windows Serverバックアップを実行すると記録される場合の対応。
+
+* https://support.microsoft.com/ja-jp/help/3193007
+
 Web Deploy環境の構築
 --------------------
 
