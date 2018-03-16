@@ -20,6 +20,7 @@ Gopher::
 
 * `GoのSSA最適化制御オプション <https://qiita.com/tooru/items/a55bcdac0500d9a93f39>`_
 * `GoのInterfaceとは何者なのか <http://niconegoto.hatenadiary.jp/entry/2017/12/03/222922>`_
+* `Assembly <https://goroutines.com/asm>`_
 
 ツール類
 ========
