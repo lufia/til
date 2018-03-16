@@ -4,6 +4,7 @@ Go関係の便利ツールなど
 
 * `Go Tools <https://gotools.org/>`_
 * `Go Search <http://go-search.org/>`_
+* `Go Issues <https://goissues.org/>`_
 
 JSON生成
 
