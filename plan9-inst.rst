@@ -1,6 +1,14 @@
 Plan 9のインストール関連
 ========================
 
+macOSでQEMU
+-----------
+
+kvmが無いのでとても遅いが、Hypervisor.framework対応版が存在した。
+これは最終的に本家へマージされるのが目標らしい。
+
+* `Qemu on MacOSX with Hypervisor Framework <http://www.breakintheweb.com/2017/10/14/Qemu-on-MacOSX-with-Hypervisor-Framework/>`_
+
 QEMUで ``-nographic`` 起動すると止まる
 --------------------------------------
 
