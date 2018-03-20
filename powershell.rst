@@ -88,3 +88,12 @@ JSONをPOSTすると文字化けする
 	$json = ConvertTo-Json $body
 	$bytes = [System.Text.Encoding]::UTF8.GetBytes($json)
 	Invoke-RestMethod -Method POST -Uri http://localhost:8080/ -Body $bytes
+
+リモートアクセス
+----------------
+
+メモだけ::
+
+	Enter-PSSession -ComputerName
+	New-PSSession -ComputerName
+	Set-Item WSMan:¥localhost¥Client¥TrustedHosts -Value
