@@ -61,3 +61,14 @@ PostgreSQLメモ
 * fieldsep
 * recordsep
 * tuples_only
+
+Windows上のPHPから使う
+----------------------
+
+.. code-block:: ini
+
+*C:\Program Files (x86)\PHP\(version)\php.ini* に以下を追加する::
+
+	[ExtensionList]
+	extension=php_pdo_pgsql.dll 
+	extension=php_pgsql.dll 
