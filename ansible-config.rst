@@ -26,7 +26,7 @@ Ansibleは以下の順でファイルを探す。(ベストプラクティスに
 
 .. code-block:: ini
 
-*hosts* に、``[xxx:children]`` を定義しておくと、グループ変数を適用できる。
+*hosts* に、``[xxx:children]`` を定義しておくと、グループ変数を適用できる::
 
     [node1]
     127.0.0.1
@@ -113,7 +113,9 @@ SSHユーザ名と秘密鍵を変更する
 sftpで接続できないという警告が出る
 ----------------------------------
 
-> sftp transfer mechanism failed on [0.0.0.0]. Use ANSIBLE_DEBUG=1 to see detailed information.
+``ansible-playbook`` を実行すると以下の警告が出る場合がある。
+
+	sftp transfer mechanism failed on [0.0.0.0]. Use ANSIBLE_DEBUG=1 to see detailed information.
 
 .. code-block:: ini
 
@@ -203,15 +205,15 @@ OS単位でタスクを切り替える
 
 ``when`` 属性で ``ansible_distribution`` などを使って絞り込む。
 
+====== ==================== ================= ==============
 OS     ansible_distribution ansible_os_family ansible_system
 ====== ==================== ================= ==============
 CentOS CentOS               RedHat            Linux
 macOS  MacOSX               Darwin            Darwin
 ====== ==================== ================= ==============
 
-※ これらは ``ansible all -m setup | egrep 'ansible_(dist|os|sys)'`` で調べる。
-
-タスクの ``when`` で条件として上記の変数を条件に書く::
+これらは ``ansible all -m setup | egrep 'ansible_(dist|os|sys)'`` で調べる。
+調べたら、タスクの ``when`` で条件として上記の変数を条件に書く::
 
 	name: macOSのみ実行するタスク
 	command: ...
@@ -271,7 +273,7 @@ retryファイルを作らない
 
 .. code-block:: ini
 
-*ansible.cfg* に以下を書く。``true`` なら作成する。
+*ansible.cfg* に以下を書く。``true`` なら作成する::
 
     [defaults]
     retry_files_enabled = false
