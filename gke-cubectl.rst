@@ -70,3 +70,26 @@ Podのログを表示するには、まずPodの名前を調べる::
 Dockerと同じ::
 
 	$ kubectl exec -ti venti-xxxx-xx /bin/bash
+
+コンテキスト
+------------
+
+現在のコンテキストを取得::
+
+	$ kubectl config current-context
+
+コンテキスト取得::
+
+	$ kubectl config get-contexts
+
+コンテキスト削除::
+
+	$ kubectl config delete-context xxxx
+
+クラスタ取得::
+
+	$ kubectl config get-clusters
+
+クラスタ削除::
+
+	$ kubectl config delete-cluster xxxx
