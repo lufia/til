@@ -19,6 +19,7 @@ Service
 
 Sidecar
 	メインのコンテナとは別に、同じPodで動作するコンテナ
+
 	``spec.containers`` に配列として複数書く。
 
 	メインとストレージを共有する

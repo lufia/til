@@ -87,7 +87,7 @@ Ignition Configを使ってインストール
 
 ``coreos-install`` に ``-i`` オプションでIgnition Configのパスを渡す::
 
-	$ sudo coreos-install -d /dev/sda /media/config.json
+	$ sudo coreos-install -d /dev/sda -i /media/config.json
 
 ログイン可能にする
 ------------------
@@ -125,18 +125,18 @@ Ignition Configを使ってインストール
 	  units:
 	    - name: 10-static.network
 	      contents: |
-	      [Match]
-	      Name=eth0
+	        [Match]
+	        Name=eth0
 
-	      [Network]
-	      Address=192.168.1.10/24
-	      Gateway=192.168.1.1
-	      DNS=192.168.1.1
-	      DNS=192.168.1.2
+	        [Network]
+	        Address=192.168.1.10/24
+	        Gateway=192.168.1.1
+	        DNS=192.168.1.1
+	        DNS=192.168.1.2
 
-	      [Route]
-	      Gateway=192.168.1.124
-	      Destination=10.45.0.0/16
+	        [Route]
+	        Gateway=192.168.1.124
+	        Destination=10.45.0.0/16
 
 静的ルートがなければ ``[Route]`` は無くてもよい。
 
@@ -202,10 +202,10 @@ flanneldを有効にする::
 
 	flannel: ~
 
-Masterノードの構築
+マスターノードの構築
 ==================
 
-Masterノードは以下のプロセスが必要。
+マスターノードは以下のプロセスが必要。
 
 * kube-apiserver
 * kube-scheduler
@@ -392,7 +392,7 @@ Container Linuxには ``kubelet`` のラッパーコマンドがあるので使�
 ``kubelet`` の ``--api-servers`` オプションは無くなったので、
 代わりに ``--kubeconfig`` で設定を渡す必要がある。
 
-Masterノードのkubeconfig例::
+マスターノードのkubeconfig例::
 
 	storage:
 	  files:
@@ -415,7 +415,7 @@ Masterノードのkubeconfig例::
 
 .. code-block:: console
 
-Masterノードの動作確認
+マスターノードの動作確認
 ----------------------
 
 kubeletを起動する::
@@ -434,12 +434,12 @@ kubeletを起動する::
 
 .. code-block:: console
 
-Workerノードはまだ無い::
+ワーカーノードはまだ無い::
 
 	$ kubectl get nodes
 	No resources found.
 
-Workerノードの構築
+ワーカーノードの構築
 ==================
 
 kube-proxy
