@@ -2,6 +2,16 @@
 Kubernetes関連メモ
 ==================
 
+基本的なところ
+==============
+
+なぜKubernetesが必要なのか、という話。実際の運用においては、
+コンテナホストの負荷をみてデプロイしたり、
+複数ホストを管理したりといった機能が必要だから。
+オーケストレーション。
+
+* `なぜKubernetesが必要なのか？ <https://thinkit.co.jp/article/13289>`_
+
 用語的なもの
 ============
 
@@ -11,18 +21,33 @@ Pod
 	IPアドレスを持つ
 
 Service
-	Podをまとめたもの
-
 	ロードバランサ?
 
 	IPアドレスを持つ
 
+ReplicaSet
+	Podをまとめたもの
+
+	ラベルを使ってクラスタ内で設定したPodの数を維持する
+
+Deployment
+	複数のReplicaSetを管理するもの
+
+	ローリングアップデート、ロールバックで使う
+
+	`KubernetesのWorkloadsリソース(その1) <https://thinkit.co.jp/article/13610/page/1/1>`_
+
 Sidecar
 	メインのコンテナとは別に、同じPodで動作するコンテナ
 
-	``spec.containers`` に配列として複数書く。
+	``spec.containers`` に配列として複数書く
 
 	メインとストレージを共有する
+
+Minikube
+	ローカルでKubernetesを動作させるツール
+
+	冗長性は全く無い
 
 Ingress
 -------
@@ -65,6 +90,28 @@ Helm
 ------
 
 Kubernetesのパッケージマネージャ。Podをパッケージとして運用する。
+
+Kubectl
+=======
+
+``kubectl`` はユーザとクラスタをコンテキストにまとめて、
+コンテキストを切り替えてKubernetesにアクセスする。
+
+* `Kubernetesの基礎 <https://thinkit.co.jp/article/13542>`_
+
+ユーザ
+	接続ユーザ名とキー
+
+クラスタ
+	Kubernetesクラスタのホスト名とポート
+
+コンテキスト
+	ユーザ、クラスタ、名前空間をセットにしたもの
+
+	複数のコンテキストを作成可能
+
+この設定は *~/.kube/config* に置かれている。
+ファイルの場所は環境変数 *KUBECONFIG* で変更可能。
 
 リンク
 ======
