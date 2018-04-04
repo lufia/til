@@ -62,6 +62,8 @@ HTTP
 良いコード
 ----------
 
+* `パッケージ名(Package names) <https://www.ymotongpoo.com/works/goblog-ja/post/package-names/>`_
+
 * `understanding nil <https://speakerdeck.com/campoy/understanding-nil>`_
 * `understanding the interface <https://speakerdeck.com/campoy/understanding-the-interface>`_
 * `なぜContextを構造体に含めてはいけないのか、またそれが許される状況について <https://qiita.com/sonatard/items/d97279086b24e588a82d>`_
@@ -98,6 +100,12 @@ HTTP
 
 * `loggingについて話そう <https://qiita.com/methane/items/cedbf546ae2db8a63c3d>`_
 * `C言語プログラミングの覚え書き(改訳) <http://d.hatena.ne.jp/takeda25/20141012/1413116114>`_
+
+プロジェクトレイアウト
+----------------------
+
+* `Go Project Layout <https://medium.com/golang-learn/e5213cdcfaa2>`_
+* `Goのパッケージ構成の失敗遍歴と現状確認 <https://medium.com/@timakin/fc6a4369337>`_
 
 GAE/Go
 ======
