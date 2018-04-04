@@ -9,6 +9,8 @@ Gopher::
 
 	ʕ ◔ϖ◔ʔ
 
+* `Gopherくん入門 <http://write.kogus.org/articles/S78LHt>`_
+
 言語仕様
 ========
 
