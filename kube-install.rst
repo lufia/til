@@ -25,6 +25,30 @@ Container Linuxで動作させる場合は、以下の用意が必要。
 
 ``kube-xxx`` はHyperkubeを使ってコンテナ内で組み立てるほうが良いらしい。
 
+ネットワーク
+------------
+
+Kubernetes service IP
+	``kube-apiserver`` の公開アドレス？
+
+	この記事では **192.168.1.10** を使う
+
+Pod network
+	Podに割り当てられるネットワークのCIDR
+
+	``kube-proxy`` の ``clusterCIDR`` と ``flanneld`` の *Network* はこれ
+
+	この記事では **10.254.0.0/16** を使う
+
+Service IP range
+	KubernetesクラスタのネットワークCIDR
+
+	これは既存ネットワークや、Pod networkの範囲と重なってはいけない
+
+	``kube-apiserver`` の ``--service-cluster-ip-range`` はこれ
+
+	この記事では **10.253.0.0/16** を使う
+
 準備
 ======
 
@@ -213,8 +237,45 @@ flanneldを有効にする::
 
 これらは ``kubelet`` を使って、Podとして動作させる。
 
+接続コンテキスト
+----------------
+
+接続先のホストと認証情報をまとめてコンテキストとして扱うファイルを作成する。
+上記の他にも、``certificate-authority`` などのパラメータが存在する。
+
+まずContainer Linux configにエントリを追加::
+
+	storage:
+	  files:
+	    - path: /etc/kubernetes/kubeconfig/master-config.yaml
+	      filesystem: root
+	      mode: 0644
+	      contents:
+	        local: kubeconfig/master-config.yaml
+
+*kubeconfig/master-config.yaml* の内容::
+
+	apiVersion: v1
+	kind: Config
+	clusters:
+	  - name: local
+	    cluster:
+	      api-version: v1
+	      server: http://127.0.0.1:8080
+	contexts:
+	  - context:
+	      cluster: local
+	    name: kubelet-context
+	current-context: kubelet-context
+
+このファイルは、マスターノードで動作するコンポーネントから共通して利用する。
+上記の他にも、``certificate-authority`` などのパラメータが存在する。
+
 kube-apiserver
 ---------------
+
+``kube-apiserver`` は、スケジューラや ``kubectl`` などのリクエストを処理するプロセス。
+リクエストを受けて、``etcd`` を読み書きして結果を返す。
 
 */etc/kubernetes/manifests/kube-apiserver.yaml* を作成する::
 
@@ -244,7 +305,7 @@ kube-apiserver
 	        - --insecure-port=8080
 	        - --etcd-servers=http://192.168.1.10:2379
 	        - --allow-privileged=true
-	        - --service-cluster-ip-range=10.254.0.0/16
+	        - --service-cluster-ip-range=10.253.0.0/16
 	        - --advertise-address=192.168.1.10
 	        - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
 	        - --anonymous-auth=true
@@ -280,14 +341,10 @@ TLSを有効にする場合は ``--bind-address`` と ``--secure-port`` で調�
 
 * `kubernetesの認証とアクセス制御を動かしてみる <https://ishiis.net/2017/01/21/kubernetes-authentication-authorization/>`_
 
-``--service-cluster-ip-range`` はKubernetesがKubernetesサービスのために
-割り当てるIPレンジらしい。これはflannelのアドレス範囲とは異なり、
-flannelの範囲はPodに割り当てられる。
-
-.. todo:: service-cluster-ip-range要確認
-
 kube-controller-manager
 -----------------------
+
+ワーカーノードの状態などを取得して ``kube-apiserver`` に渡すプロセス。
 
 */etc/kubernetes/manifests/kube-controller-manager.yaml* を作成::
 
@@ -331,13 +388,15 @@ kube-controller-manager
 
 ``--master`` は ``kube-apiserver`` の待ち受けるアドレス。
 ``kubelet`` で起動する場合、*127.0.0.1* は別のPodで生成されたコンテナに届く。
-上記の場合、TCP/8080は ``kube-apiserver`` のサービスが待ち受ける。
+上記のマニフェストにおいては、TCP/8080は ``kube-apiserver`` のサービスが待ち受ける。
 
 ``kube-apiserver`` で認証を有効にした場合は、
 ``--service-account-private-key-file`` で秘密鍵の指定も必要。
 
 kube-scheduler
 ---------------
+
+必要なPodの作成、削除を行うプロセス。
 
 */etc/kubernetes/manifests/kube-scheduler.yaml* を作成::
 
@@ -376,29 +435,12 @@ kube-scheduler-config.yaml::
 	apiVersion: componentconfig/v1alpha1
 	kind: KubeSchedulerConfiguration
 	clientConnection:
-	  kubeconfig: /etc/kubernetes/kubeconfig/kube-scheduler.yaml
+	  kubeconfig: /etc/kubernetes/kubeconfig/master-config.yaml
 	leaderElection:
 	  leaderElect: true
 
 各パラメータは `type KubeSchedulerConfiguration <https://github.com/kubernetes/kubernetes/blob/master/pkg/apis/componentconfig/types.go>`_ を読んで書く。
 ``apiVersion`` の値は、どこから拾ってくるのが正解なのかわからない。
-
-kube-scheduler.yaml::
-
-	apiVersion: v1
-	kind: Config
-	clusters:
-	  - name: default
-	    cluster:
-	      api-version: v1
-	      server: http://127.0.0.1:8080
-	contexts:
-	  - context:
-	      cluster: default
-	    name: default
-	current-context: default
-
-これは他のConfigファイルと共用しても良さそう。
 
 ワーカーノードの構築
 ====================
@@ -408,7 +450,7 @@ kube-proxy
 
 ``kube-proxy`` は色々なコマンドラインオプションが廃止されて、
 代わりにKubeProxyConfigurationが使われるようになった。
-Kubernetes 1.9現在、まだ利用可能だが、
+Kubernetes 1.9現在、オプションはまだ利用可能だが、
 
 	WARNING: all flags other than --config, --write-config-to, and --cleanup are deprecated. Please begin using a config file ASAP.
 
@@ -422,41 +464,20 @@ Kubernetes 1.9現在、まだ利用可能だが、
 	      mode: 0644
 	      contents:
 	        local: kubeconfig/kube-proxy-config.yaml
-	    - path: /etc/kubernetes/kubeconfig/kube-proxy.yaml
-	      filesystem: root
-	      mode: 0644
-	      contents:
-	        local: kubeconfig/kube-proxy.yaml
 
 *kube-proxy-config.yaml* の内容::
 
 	apiVersion: kubeproxy.config.k8s.io/v1alpha1
 	kind: KubeProxyConfiguration
 	bindAddress: 0.0.0.0
-	#clusterCIDR: 10.254.1.0/24
+	clusterCIDR: 10.254.0.0/16
 	#hostnameOverride: app-kube1
 	clientConnection:
-	  kubeconfig: /etc/kubernetes/kubeconfig/kube-proxy.yaml
-	#mode: iptables
-	mode: ipvs
+	  kubeconfig: /etc/kubernetes/kubeconfig/master-config.yaml
+	mode: iptables
 
 このファイルは、ドキュメントが見つからなかったので、
 `proxy/apis/kubeproxyconfig/v1alpha1/types.go <https://github.com/kubernetes/kubernetes/blob/master/pkg/proxy/apis/kubeproxyconfig/v1alpha1/types.go>`_ のコードを読むしかなかった。
-
-*kube-proxy.yaml* はアカウントと ``kube-apiserver`` のアドレスを扱う::
-
-	apiVersion: v1
-	kind: Config
-	clusters:
-	  - name: default
-	    cluster:
-	      api-version: v1
-	      server: http://127.0.0.1:8080
-	contexts:
-	  - context:
-	      cluster: default
-	    name: default
-	current-context: default
 
 用意ができたら、``kube-proxy`` のマニフェストを用意する::
 
@@ -501,15 +522,12 @@ Kubernetes 1.9現在、まだ利用可能だが、
 	        path: /etc/kubernetes/kubeconfig
 	      name: kubeconfig
 
-コマンドラインオプションで、``--config`` を使って、
-*kube-proxy-config.yaml* を参照する。
-
 IPVSの有効化
 ------------
 
-Kubernetes 1.9以降で、ルーティングにIPVSを使えるようになった。
+試験的に、Kubernetes 1.9以降で、ルーティングにIPVSを使えるようになった。
 iptablesでは、数千エントリ以上になった場合に遅くなる問題があるらしい。
-これは*kube-proxy-config.yaml* で ``mode: ipvs`` を設定すれば良い。
+これは *kube-proxy-config.yaml* で ``mode: ipvs`` を設定すれば良い。
 
 IPVSを使う場合、*ip_vs* モジュールを有効にする必要がある。
 Container Linuxにはモジュールは入っているので、これを有効にする::
@@ -521,6 +539,17 @@ Container Linuxにはモジュールは入っているので、これを有効�
 	      mode: 0644
 	      contents:
 	        inline: ip_vs
+
+また、試験導入の機能を使うためには、FeatureGateを通して有効にしなければならない。
+FeatureGateは *kube-proxy-config.yaml* で設定する(一部抜粋)::
+
+	kind: KubeProxyConfiguration
+	featureGates: "SupportIPVSProxyMode=true"
+	bindAddress: 0.0.0.0
+	mode: ipvs
+
+* `IPVS <https://github.com/kubernetes/kubernetes/blob/master/pkg/proxy/ipvs/README.md>`_
+* `Feature Gates <https://kubernetes.io/docs/reference/feature-gates/>`_
 
 ノードの立ち上げ
 ================
@@ -553,7 +582,7 @@ systemdにサービスを作成する::
 	        ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 	        ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 	        ExecStart=/usr/lib/coreos/kubelet-wrapper \
-	            --kubeconfig=/etc/kubernetes/master.yaml \
+	            --kubeconfig=/etc/kubernetes/kubeconfig/master-config.yaml \
 	            --register-schedulable=true \
 	            --allow-privileged=true \
 	            --pod-manifest-path=/etc/kubernetes/manifests
@@ -572,40 +601,6 @@ systemdにサービスを作成する::
 ``--hostname-override`` は ``os.Hostname()`` の代わりに、
 指定したホスト名を使うように指示するオプション。無くても動く。
 
-``kubelet`` に ``kube-apiserver`` のアドレスを渡す必要があるけれど、
-過去に利用できた ``--api-servers`` オプションは無くなったので、
-代わりに ``--kubeconfig`` で設定を渡す必要がある。
-
-マスターノードのkubeconfig例::
-
-	storage:
-	  files:
-	    - path: /etc/kubernetes/kubeconfig/master.yaml
-	      filesystem: root
-	      mode: 0644
-	      contents:
-	        local: kubeconfig/master.yaml
-
-*master.yaml* の内容::
-
-	apiVersion: v1
-	kind: Config
-	clusters:
-	  - name: local
-	    cluster:
-	      api-version: v1
-	      server: http://127.0.0.1:8080
-	contexts:
-	  - context:
-	      cluster: local
-	    name: kubelet-context
-	current-context: kubelet-context
-
-これは接続先のホストと認証情報をまとめてコンテキストとして扱うファイル。
-上記の他にも、``certificate-authority`` などのパラメータが存在する。
-
-.. code-block:: console
-
 マスターノードの動作確認
 ----------------------
 
@@ -617,10 +612,11 @@ systemdにサービスを作成する::
 	$ kubectl config set-context kubetest --cluster=kubetest
 	$ kubectl config use-context kubetest
 	$ kubectl cluster-info
+	Kubernetes master is running at http://192.168.1.10:8080
 
 .. code-block:: console
 
-ワーカーノードにも1つだけ存在する::
+ワーカーノードも1つだけ存在する::
 
 	$ kubectl get nodes
 	NAME        STATUS    ROLES     AGE       VERSION
@@ -660,6 +656,20 @@ kube-proxy
 -----------
 
 .. todo:: 複数ノードの場合について書く
+
+うまく動かない場合
+==================
+
+いくつかのログを調査すると解決するかもしれません。
+
+OSのログ
+	*/var/log/messages* のようなログファイル
+
+``kubelet.service`` のログ
+	``journalctl -u kubelet.service`` で読めます
+
+``kube-apiserver`` などのログ
+	``docker logs`` コマンドで読めます
 
 参考情報
 ========

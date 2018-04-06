@@ -136,3 +136,4 @@ Istio
 
 * `RPCに特化したGoogleのセキュリティ通信ALTSとは何か <https://jovi0608.hatenablog.com/entry/2018/01/16/085647>`_
 * `Google Borgとコンテナベース分散システムデザインパターン <https://www.slideshare.net/ktateish/google-borg>`_
+* `クラウドの設計パターン <https://docs.microsoft.com/ja-jp/azure/architecture/patterns/>`_
