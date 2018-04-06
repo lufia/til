@@ -121,6 +121,8 @@ Kubernetes
 
 * `Kubernetesのネットワーク <http://tech.uzabase.com/entry/2017/09/12/164756>`_
 * `Kubernetes サイドカーの作り方とファイル共有 <https://qiita.com/MahoTakara/items/c6db540a5a121cc7c2c2>`_
+* `Kubernetesはクラスタで障害があったとき、どういう動きをするのか <http://dr-asa.hatenablog.com/entry/2018/04/02/174006>`_
+* `Kubernetes Security - Best Practice Guide <https://github.com/freach/kubernetes-security-best-practice>`_
 
 Istio
 ------
@@ -128,3 +130,9 @@ Istio
 * `Envoy、Istioとは <https://qiita.com/seikoudoku2000/items/9d54f910d6f05cbd556d>`_
 * `Kubernetesをサービスメッシュ化するIstioとは？ <https://thinkit.co.jp/article/13471>`_
 * `Istio入門 その1 <https://qiita.com/Ladicle/items/979d59ef0303425752c8>`_
+
+その他
+------
+
+* `RPCに特化したGoogleのセキュリティ通信ALTSとは何か <https://jovi0608.hatenablog.com/entry/2018/01/16/085647>`_
+* `Google Borgとコンテナベース分散システムデザインパターン <https://www.slideshare.net/ktateish/google-borg>`_
