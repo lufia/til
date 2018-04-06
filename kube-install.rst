@@ -77,9 +77,13 @@ Nixpkgsでインストールするには::
 
 	TARG=config.iso
 	DIR=img
+	SSL=ssl
+	KEYS=$(SSL)/sa.key
+	YAMLS=$(wildcard */*.yaml)
 	RES=.
 
 	.PHONY: all clean nuke
+	.PRECIOUS: %.json %.key
 
 	all: $(TARG)
 
@@ -87,16 +91,21 @@ Nixpkgsでインストールするには::
 		rm -rf $(DIR)/*
 		mkdir -p $(DIR)
 		cp $< $(DIR)/$<
+		rm -f $@
 		hdiutil makehybrid -iso -joliet -default-volume-name $* -o $@ $(DIR)
 
-	%.json: %.yaml
+	%.json: %.yaml $(KEYS) $(YAMLS)
 		ct -files-dir $(RES) -in-file $< -out-file $@
+
+	%.key:
+		mkdir -p $(dir $@)
+		openssl genrsa -out $@ 2048
 
 	clean:
 		rm -rf $(DIR)
 
 	nuke:
-		rm -rf $(DIR) $(TARG)
+		rm -rf $(DIR) $(SSL) $(TARG)
 
 ここではISOイメージを作成している。
 ネットワーク等でインストール前のContainer Linuxとファイルコピーが可能なら
@@ -363,7 +372,6 @@ kube-controller-manager
 	        - controller-manager
 	        - --master=http://127.0.0.1:8080
 	        - --leader-elect=true
-	        - --root-ca-file=/etc/kubernetes/ssl/ca.pem
 	      livenessProbe:
 	        httpGet:
 	          host: 127.0.0.1
@@ -392,6 +400,7 @@ kube-controller-manager
 
 ``kube-apiserver`` で認証を有効にした場合は、
 ``--service-account-private-key-file`` で秘密鍵の指定も必要。
+他にも、``--root-ca-file`` などいろいろなオプションがある。
 
 kube-scheduler
 ---------------
@@ -657,6 +666,64 @@ kube-proxy
 
 .. todo:: 複数ノードの場合について書く
 
+サービスアカウント設定
+======================
+
+このままでは、``kube-apiserver`` と ``kube-controller-manager`` 間で、
+トークンがないため ``kubectl create`` が
+
+	No API token found for service account
+
+というエラーになってしまう。
+Podの作成など書き込み操作が行えるように、サービスアカウントを作成する。
+
+.. code-block:: console
+
+サービスアカウント鍵の作成::
+
+	$ sudo openssl genrsa -out /etc/kubernetes/ssl/sa.key 2048
+
+``kube-apiserver`` のマニフェストに鍵を追加::
+
+	spec:
+	  containers:
+	    - name: kube-apiserver
+	      command:
+	        - /hyperkube
+	        - apiserver
+	        - (snip)
+	        - --service_account_key=/etc/kubernetes/ssl/sa.key
+
+``kube-controller-manager`` のマニフェストにも鍵を追加::
+
+	spec:
+	  containers:
+	    - name: kube-apiserver
+	      command:
+	        - /hyperkube
+	        - controller-manager
+	        - (snip)
+	        - --service_account_private_key_file=/etc/kubernetes/ssl/sa.key
+
+.. code-block:: console
+
+これで起動しなおせば ``kubectl create`` が通る::
+
+	$ kubectl create -f nginx.yaml
+	$ kubectl get pods
+	NAME      READY     STATUS    RESTARTS   AGE
+	nginx     1/1       Running   0          14m
+
+Anonymous auth
+---------------
+
+リクエストにトークンが存在しない場合、匿名ユーザとして扱うらしい。
+不正なトークンが含まれている場合はエラーになる。
+
+これは ``--anonymous-auth=true`` オプションで有効になるが、
+``--authorization-mode`` に ``AlwaysAuth`` が含まれている場合、
+危険なので強制的に無効化される。
+
 うまく動かない場合
 ==================
 
@@ -674,13 +741,21 @@ OSのログ
 参考情報
 ========
 
+クラスタについて。
+
 * `Kubernetes: 構成コンポーネント一覧 <https://qiita.com/tkusumi/items/c2a92cd52bfdb9edd613>`_
 * `Getting started with etcd <https://coreos.com/etcd/docs/latest/getting-started-with-etcd.html>`_
 * `Configuring flannel for container networking <https://coreos.com/flannel/docs/latest/flannel-config.html>`_
 * `How to Deploy Kubernetes on CoreOS Cluster <https://www.upcloud.com/support/deploy-kubernetes-coreos/>`_
 * `Deploy Kubernetes Master Node(s) <https://github.com/coreos/coreos-kubernetes/blob/master/Documentation/deploy-master.md>`_
+* `Kubernetesでクラスタ環境構築手順 <https://qiita.com/Esfahan/items/db7a79816731e6aa5cf5>`
 * `Kubernetesにまつわるエトセトラ <https://www.slideshare.net/WorksApplications/kubernetes-65070472>`_
 * `Creating a Custom Cluster from Scratch <https://kubernetes.io/docs/getting-started-guides/scratch/>`_
+
+認証、認可の話。
+
+* `Managing Service Accounts <https://kubernetes.io/docs/admin/service-accounts-admin/>`_
+* `Authenticating <https://kubernetes.io/docs/admin/authentication/>`_
 
 Kubernetes以外の話。
 
