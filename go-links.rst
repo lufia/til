@@ -109,6 +109,12 @@ HTTP
 * `Go Project Layout <https://medium.com/golang-learn/e5213cdcfaa2>`_
 * `Goのパッケージ構成の失敗遍歴と現状確認 <https://medium.com/@timakin/fc6a4369337>`_
 
+テスト・デバッグ
+----------------
+
+* `Diagnostics <https://golang.org/doc/diagnostics.html>`_
+* `go tool trace <https://making.pusher.com/go-tool-trace/>`_
+
 GAE/Go
 ======
 
