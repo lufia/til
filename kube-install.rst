@@ -78,14 +78,13 @@ Nixpkgsでインストールするには::
 	TARG=config.iso
 	DIR=img
 	SSL=ssl
-	KEYS=$(SSL)/sa.key
-	YAMLS=$(wildcard */*.yaml)
+	KEYS=$(SSL)/sa.key $(SSL)/sa.pub
+	DEPS=$(wildcard */*.yaml)
 	RES=.
 
-	.PHONY: all clean nuke
-	.PRECIOUS: %.json %.key
+	.PHONY: all keys clean nuke
 
-	all: $(TARG)
+	all: keys $(TARG)
 
 	%.iso: %.json
 		rm -rf $(DIR)/*
@@ -94,12 +93,18 @@ Nixpkgsでインストールするには::
 		rm -f $@
 		hdiutil makehybrid -iso -joliet -default-volume-name $* -o $@ $(DIR)
 
-	%.json: %.yaml $(KEYS) $(YAMLS)
+	%.json: %.yaml $(KEYS) $(DEPS)
 		ct -files-dir $(RES) -in-file $< -out-file $@
+
+	keys: $(KEYS)
+
+	%.pub: %.key
+		mkdir -p $(dir $@)
+		openssl ec -in $< -pubout -out $@
 
 	%.key:
 		mkdir -p $(dir $@)
-		openssl genrsa -out $@ 2048
+		openssl ecparam -name prime256v1 -genkey -noout -out $@
 
 	clean:
 		rm -rf $(DIR)
@@ -685,9 +690,12 @@ Podの作成など書き込み操作が行えるように、サービスアカ�
 
 サービスアカウント鍵の作成::
 
-	$ sudo openssl genrsa -out /etc/kubernetes/ssl/sa.key 2048
+	$ sudo openssl ecparam -name prime256v1 -genkey -noout -out sa.key
+	$ sudo openssl ec -in sa.key -pubout -out sa.pub
 
-``kube-apiserver`` のマニフェストに鍵を追加::
+ここではECDSAで鍵ペアを作ったが、RSA鍵ペアでも良いらしい。
+
+作った公開鍵を ``kube-apiserver`` のマニフェストに追加::
 
 	spec:
 	  containers:
@@ -696,9 +704,9 @@ Podの作成など書き込み操作が行えるように、サービスアカ�
 	        - /hyperkube
 	        - apiserver
 	        - (snip)
-	        - --service_account_key=/etc/kubernetes/ssl/sa.key
+	        - --service-account-key-file=/etc/kubernetes/ssl/sa.pub
 
-``kube-controller-manager`` のマニフェストにも鍵を追加::
+秘密鍵は ``kube-controller-manager`` のマニフェストに追加::
 
 	spec:
 	  containers:
@@ -707,7 +715,7 @@ Podの作成など書き込み操作が行えるように、サービスアカ�
 	        - /hyperkube
 	        - controller-manager
 	        - (snip)
-	        - --service_account_private_key_file=/etc/kubernetes/ssl/sa.key
+	        - --service-account-private-key-file=/etc/kubernetes/ssl/sa.key
 
 .. code-block:: console
 
