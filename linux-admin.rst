@@ -26,3 +26,11 @@ Yum関連
 2つだけ残してあとは削除::
 
 	$ sudo package-cleanup --oldkernels --count=2
+
+プログラムをトレース
+--------------------
+
+``ltrace`` でライブラリの動作をトレースする。
+``strace`` でシステムコールの動作をトレースする。
+
+* `straceとltraceでトレース <http://szarny.hatenablog.com/entry/2017/08/27/153048>`_

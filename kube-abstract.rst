@@ -37,6 +37,11 @@ Deployment
 
 	`KubernetesのWorkloadsリソース(その1) <https://thinkit.co.jp/article/13610/page/1/1>`_
 
+DaemonSet
+	ReplicaSetに似ている
+
+	全てのノードでコンテナを動かしたい場合に利用する
+
 Sidecar
 	メインのコンテナとは別に、同じPodで動作するコンテナ
 
@@ -48,6 +53,22 @@ Minikube
 	ローカルでKubernetesを動作させるツール
 
 	冗長性は全く無い
+
+Admission Controller
+	``kube-apiserver`` のプラグイン
+
+	コマンドラインオプションで有効・無効を切り替える
+
+	`Using Admission Controllers <https://kubernetes.io/docs/admin/admission-controllers/>`_
+
+Service Account
+	APIを利用するためのアカウント
+
+	``controller-manager`` と ``apiserver`` の間で使う
+
+	ユーザアカウントとサービスアカウントの2種類あるが、
+	ユーザアカウントはグローバルに一意のユーザで、
+	サービスアカウントは名前空間に閉じられる
 
 Ingress
 -------
@@ -123,6 +144,7 @@ Kubernetes
 * `Kubernetes サイドカーの作り方とファイル共有 <https://qiita.com/MahoTakara/items/c6db540a5a121cc7c2c2>`_
 * `Kubernetesはクラスタで障害があったとき、どういう動きをするのか <http://dr-asa.hatenablog.com/entry/2018/04/02/174006>`_
 * `Kubernetes Security - Best Practice Guide <https://github.com/freach/kubernetes-security-best-practice>`_
+* `Deploymentの仕組み <https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a>`_
 
 Istio
 ------

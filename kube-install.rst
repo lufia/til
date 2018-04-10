@@ -344,7 +344,11 @@ kube-apiserver
 	        path: /usr/share/ca-certificates
 	      name: ssl-certs-host
 
-ここでは暗号化していないが、認証を行うためにはTLSが必要らしい。
+``--admission-control`` オプションは、``kube-apiserver`` の機能を有効にする。
+
+* `Using Admission Controllers <https://kubernetes.io/docs/admin/admission-controllers/>`_
+
+また、ここでは暗号化していないが、認証を行うためにはTLSが必要らしい。
 TLSを有効にする場合は ``--bind-address`` と ``--secure-port`` で調整する。
 認証には ``--service-account-key-file`` で秘密鍵の指定も必要。
 

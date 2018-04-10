@@ -114,6 +114,7 @@ HTTP
 
 * `Diagnostics <https://golang.org/doc/diagnostics.html>`_
 * `go tool trace <https://making.pusher.com/go-tool-trace/>`_
+* `golangでパフォーマンスチューニングする際に気をつけるべきこと <https://mattn.kaoriya.net/software/lang/go/20161019124907.htm>`_
 
 GAE/Go
 ======
