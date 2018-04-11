@@ -736,6 +736,35 @@ Anonymous auth
 ``--authorization-mode`` に ``AlwaysAuth`` が含まれている場合、
 危険なので強制的に無効化される。
 
+外部からPodへ通信する
+=====================
+
+``type: Service`` で指定できるものは、以下の4つがある。
+
+ClusterIP
+	Kubernetesクラスタの内部で使われるIPレンジから割り当てられるもの
+
+	クラスタの外から直接アクセスはできない
+
+NodePort
+	KubernetesノードのIPアドレスが使われるもの
+
+LoadBalancer
+	TCPロードバランサ
+
+	クラウドプロバイダによって提供される
+
+ExternalName
+	kube-dnsを使う？よくわからない
+
+* `Services <https://kubernetes.io/docs/concepts/services-networking/service/>`_
+
+だけど、ClusterIPは、クラスタ外からアクセスできない。
+NodePortはポートが共有されるので、あまり嬉しくない。
+通常はLoadBalancerを使うが、独自ネットワークでクラスタを構築した場合は使えない。
+
+.. todo:: うまく動かない
+
 うまく動かない場合
 ==================
 
@@ -760,7 +789,7 @@ OSのログ
 * `Configuring flannel for container networking <https://coreos.com/flannel/docs/latest/flannel-config.html>`_
 * `How to Deploy Kubernetes on CoreOS Cluster <https://www.upcloud.com/support/deploy-kubernetes-coreos/>`_
 * `Deploy Kubernetes Master Node(s) <https://github.com/coreos/coreos-kubernetes/blob/master/Documentation/deploy-master.md>`_
-* `Kubernetesでクラスタ環境構築手順 <https://qiita.com/Esfahan/items/db7a79816731e6aa5cf5>`
+* `Kubernetesでクラスタ環境構築手順 <https://qiita.com/Esfahan/items/db7a79816731e6aa5cf5>`_
 * `Kubernetesにまつわるエトセトラ <https://www.slideshare.net/WorksApplications/kubernetes-65070472>`_
 * `Creating a Custom Cluster from Scratch <https://kubernetes.io/docs/getting-started-guides/scratch/>`_
 
@@ -768,6 +797,7 @@ OSのログ
 
 * `Managing Service Accounts <https://kubernetes.io/docs/admin/service-accounts-admin/>`_
 * `Authenticating <https://kubernetes.io/docs/admin/authentication/>`_
+* `kubernetesがサポートする認証方法の全パターンを動かす <https://qiita.com/hiyosi/items/43465d4fc501c2044d01>`_
 
 Kubernetes以外の話。
 

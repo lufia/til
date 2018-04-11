@@ -73,14 +73,26 @@ Service Account
 Ingress
 -------
 
-HTTPロードバランサ。Serviceとインターネットの間に位置する。
+HTTPロードバランサのルール。Serviceとインターネットの間に位置する。
 ``kind: Ingress`` として定義する。
 
 ``type: LoadBalancer`` との違いは、LoadBalancerはTCPロードバランサなので、
 リクエストを認識して扱うことができない。
 
-実態はIngress Controllerとして実装されるらしい。
+Ingressは ``kind: Config`` と同じようなリソースで、これ自体は動作しない。
+動作の実態はIngress Controllerとして実装される。
 たとえばIstio Ingress Controller(a Kubernetes Ingress Controller based on Envoy)など。
+
+* `Ingress <https://kubernetes.io/docs/concepts/services-networking/ingress/>`_
+
+Ingress Controller
+------------------
+
+Ingressのリソース通りに動作するコントローラ。色々存在する。
+
+* `NGINX Ingress Controller <https://github.com/kubernetes/ingress-nginx>`_
+* Istio Ingress Controller
+* `nghttpx Ingress controller <https://github.com/zlabjp/nghttpx-ingress-lb>`_
 
 Istio
 ------
