@@ -102,6 +102,18 @@ Docker-composeで複数インスタンス
 
 	$ docker-compose scale (イメージ名)=(インスタンス数)
 
+Docker-composeでコンテナ名を指定する
+------------------------------------
+
+通常はディレクトリ名がプリフィックスに付くが、
+異なる名前を付けたい場合は、環境変数 ``COMPOSE_PROJECT_NAME`` を設定する。
+
+.. code-block:: bash
+
+	export COMPOSE_PROJECT_NAME=xxx
+	docker-compose build
+	docker-compose up -d
+
 Docker service
 --------------
 
