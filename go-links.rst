@@ -23,6 +23,8 @@ Gopher::
 * `GoのSSA最適化制御オプション <https://qiita.com/tooru/items/a55bcdac0500d9a93f39>`_
 * `GoのInterfaceとは何者なのか <http://niconegoto.hatenadiary.jp/entry/2017/12/03/222922>`_
 * `Assembly <https://goroutines.com/asm>`_
+* `Go functions in assembly language <https://github.com/golang/go/files/447163/GoFunctionsInAssembly.pdf>`_
+* `The Plan 9 Assembler Handbook <https://taimen.jp/f/324>`_
 
 ツール類
 ========
