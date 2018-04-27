@@ -48,6 +48,13 @@ Gopher::
 * `意外と知らないgoroutineのスケジューラーの挙動 <https://qiita.com/niconegoto/items/3952d3c53d00fccc363b>`_
 * `GoConで発表してきたのでついでにruntime以下の知識をまとめていく <http://niconegoto.hatenadiary.jp/entry/2017/04/11/092810>`_
 
+GC
+-----
+
+* `GolangのGCを追う <https://deeeet.com/writing/2016/05/08/gogc-2016/>`_
+* `Golangの新しいGCアルゴリズム Transaction Oriented Collector <https://deeeet.com/writing/2016/06/29/toc/>`_
+* `mgc.go <https://golang.org/src/runtime/mgc.go>`_
+
 コンテナ
 --------
 
