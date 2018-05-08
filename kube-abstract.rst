@@ -158,6 +158,12 @@ Kubernetes
 * `Kubernetes Security - Best Practice Guide <https://github.com/freach/kubernetes-security-best-practice>`_
 * `Deploymentの仕組み <https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a>`_
 
+ロギング
+--------
+
+* `k8sでロギングってどんなやり方があるんかな？ <http://bufferings.hatenablog.com/entry/2018/01/25/222500>`_
+* `Kubernetesのログ分析環境を作る <http://tech.uzabase.com/entry/2018/02/01/161447>`_
+
 Istio
 ------
 

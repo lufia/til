@@ -15,6 +15,8 @@ Gopher::
 ========
 
 * `[翻訳]Go言語の構文がC言語から大胆に変わった理由 <https://qiita.com/hachi8833/items/7c43a93130fcce3e308f>`_
+* `Goのスライスの内部実装 <http://jxck.hatenablog.com/entry/golang-slice-internals>`_
+* `Go Range Loop Internals <https://garbagecollected.org/2017/02/22/go-range-loop-internals/>`_
 * `Issue 9 <https://github.com/golang/go/issues/9>`_
 
 コンパイラ
@@ -31,6 +33,7 @@ Gopher::
 ========
 
 * `go tool trace <https://making.pusher.com/go-tool-trace/>`_
+* `go tool traceでgoroutineの実行状況を可視化する <http://yuroyoro.hatenablog.com/entry/2017/12/11/192341>`_
 * `x/tools <https://godoc.org/golang.org/x/tools/cmd/>`_
 * `dep <https://godoc.org/github.com/golang/dep/cmd/dep>`_
 * `golint <https://github.com/golang/lint>`_
@@ -47,7 +50,10 @@ Gopher::
 ----------
 
 * `意外と知らないgoroutineのスケジューラーの挙動 <https://qiita.com/niconegoto/items/3952d3c53d00fccc363b>`_
+* `【翻訳】goroutine の仕組み <http://sairoutine.hatenablog.com/entry/2017/12/02/182827>`_
 * `GoConで発表してきたのでついでにruntime以下の知識をまとめていく <http://niconegoto.hatenadiary.jp/entry/2017/04/11/092810>`_
+* `Goのスケジューラー実装とハマりポイント <https://talks.godoc.org/github.com/niconegoto/talks/concurrency.slide>`_
+* `Golangのスケジューラあたりの話 <https://qiita.com/takc923/items/de68671ea889d8df6904>`_
 
 GC
 -----
@@ -105,6 +111,7 @@ HTTP
 --------
 
 * `Errors are values <https://blog.golang.org/errors-are-values>`_
+* `Error handling in Upspin <https://commandcenter.blogspot.jp/2017/12/error-handling-in-upspin.html>`_
 * `Go言語のFunctional Option Pattern <https://qiita.com/weloan/items/56f1c7792088b5ede136>`_
 
 考え方
@@ -118,13 +125,22 @@ HTTP
 
 * `Go Project Layout <https://medium.com/golang-learn/e5213cdcfaa2>`_
 * `Goのパッケージ構成の失敗遍歴と現状確認 <https://medium.com/@timakin/fc6a4369337>`_
+* `golang のレイヤ構造において、他のコードに影響なくインフラレイヤのデータソース実装を差し替えることは可能か? <http://pospome.hatenablog.com/entry/2017/11/24/163149>`_
 
 テスト・デバッグ
 ----------------
 
+* `Advanced Testing in Go <https://about.sourcegraph.com/go/advanced-testing-in-go/>`_
 * `Diagnostics <https://golang.org/doc/diagnostics.html>`_
 * `go tool trace <https://making.pusher.com/go-tool-trace/>`_
 * `golangでパフォーマンスチューニングする際に気をつけるべきこと <https://mattn.kaoriya.net/software/lang/go/20161019124907.htm>`_
+* `Building and using coverage-instrumented programs with Go <http://damien.lespiau.name/2017/05/building-and-using-coverage.html>`_
+
+オプション
+----------
+
+* `Go のオプション引数で -v -v -v みたいに複数指定する方法 <http://tyru.hatenablog.com/entry/2017/12/09/013948>`_
+* `Re: Goでコマンドライン引数と環境変数の両方からflagを設定したい <https://mattn.kaoriya.net/software/lang/go/20170609110526.htm>`_
 
 GAE/Go
 ======
@@ -148,6 +164,8 @@ GAE/Go
 その他
 ------
 
+* `Automatic Stackdriver Tracing for gRPC <https://rakyll.org/grpc-trace/>`_
+	* cloud.google.com/go/traceで送れるらしい
 * `GAE/Goのurlfetchのタイムアウトを設定する <http://pospome.hatenablog.com/entry/2017/12/17/112144>`_
 
 情報収集
