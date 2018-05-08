@@ -25,6 +25,7 @@ Gopher::
 * `Assembly <https://goroutines.com/asm>`_
 * `Go functions in assembly language <https://github.com/golang/go/files/447163/GoFunctionsInAssembly.pdf>`_
 * `The Plan 9 Assembler Handbook <https://taimen.jp/f/324>`_
+* `Introduction to the Compiler <https://github.com/golang/go/blob/master/src/cmd/compile/README.md>`_
 
 ツール類
 ========
