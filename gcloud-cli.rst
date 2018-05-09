@@ -57,3 +57,8 @@ Datastoreのバックアップ::
 リストア::
 
 	$ gcloud datastore import gs://bucket/**/*.overall_export_metadata
+
+ストレージ
+===========
+
+* `perfdiag - Run performance diagnostic <https://cloud.google.com/storage/docs/gsutil/commands/perfdiag>`_
