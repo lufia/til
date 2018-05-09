@@ -142,6 +142,11 @@ HTTP
 * `Go のオプション引数で -v -v -v みたいに複数指定する方法 <http://tyru.hatenablog.com/entry/2017/12/09/013948>`_
 * `Re: Goでコマンドライン引数と環境変数の両方からflagを設定したい <https://mattn.kaoriya.net/software/lang/go/20170609110526.htm>`_
 
+埋め込み
+--------
+
+* `Choosing A Library to Embed Static Assets in Go <http://tech.townsourced.com/post/embedding-static-files-in-go/>`_
+
 GAE/Go
 ======
 

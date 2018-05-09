@@ -11,6 +11,7 @@
 	* 時間の見積もりとPaxos+Raftの説明
 * `分散システムの一貫性に関する動向について <https://techblog.yahoo.co.jp/architecture/2015-04-ditributed-consistency/>`_
 * `分散ロックという名の過ち <http://kumagi.hatenablog.com/entry/distributed_lock>`_
+* `マイクロサービスのアンチパターンとパターン <https://www.infoq.com/jp/news/2018/05/microservices-anti-patterns>`_
 
 評価
 =====

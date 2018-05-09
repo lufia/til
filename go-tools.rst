@@ -12,6 +12,12 @@ JSON生成
 * `quicktype <https://quicktype.io/>`_
 * `JSON-to-Go <https://mholt.github.io/json-to-go/>`_
 
+JavaScript
+
+* `jsgo <https://play.jsgo.io/>`_
+	* `DOMを扱うサンプル <https://play.jsgo.io/github.com/dave/jstest>`_
+	* `画像圧縮サンプル <https://play.jsgo.io/github.com/dave/img>`_
+
 SSHで ``go get`` する
 ---------------------
 
