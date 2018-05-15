@@ -72,6 +72,14 @@ Harvey OS
 Plan 9のフォークで、Plan 9をgccでコンパイルできるようにしたもの。
 2018年現在、おそらくフォークの中では最も活発に開発されている。
 
+drawterm-cocoa
+--------------
+
+* `jas / drawterm-cocoa <https://bitbucket.org/jas/drawterm-cocoa>`_
+
+DrawtermのCocoaへ移植したバージョン。
+macOSで使うならこれが良い。
+
 Octopus
 --------
 
