@@ -28,3 +28,7 @@ run queueのみを調べる方法はなさそう。
 	$ ps -ef
 
 ``top`` でも調べられるらしいがよくわからなかった。
+
+* `vmstatの見方と考え方 <http://piro791.blog.so-net.ne.jp/2008-10-02>`_
+* `LinuxのI/OやCPUの負荷とロードアベレージの関係を詳しく見てみる <https://qiita.com/kunihirotanaka/items/21194f77713aa0663e3b>`_
+* `I/O負荷の正確な状況はiowaitでは分かりません <https://qiita.com/kunihirotanaka/items/a536ee35d589027e4a5a>`_
