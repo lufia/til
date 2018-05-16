@@ -34,6 +34,7 @@ Gopher::
 
 * `go tool trace <https://making.pusher.com/go-tool-trace/>`_
 * `go tool traceでgoroutineの実行状況を可視化する <http://yuroyoro.hatenablog.com/entry/2017/12/11/192341>`_
+* `Go execution tracer <https://blog.gopheracademy.com/advent-2017/go-execution-tracer/>`_
 * `x/tools <https://godoc.org/golang.org/x/tools/cmd/>`_
 * `dep <https://godoc.org/github.com/golang/dep/cmd/dep>`_
 * `golint <https://github.com/golang/lint>`_

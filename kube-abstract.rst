@@ -90,6 +90,7 @@ Ingress Controller
 
 Ingressのリソース通りに動作するコントローラ。色々存在する。
 
+* `Ingress Controller Catalog <https://github.com/kubernetes/ingress-nginx/blob/master/docs/ingress-controller-catalog.md>`_
 * `NGINX Ingress Controller <https://github.com/kubernetes/ingress-nginx>`_
 * Istio Ingress Controller
 * `nghttpx Ingress controller <https://github.com/zlabjp/nghttpx-ingress-lb>`_
@@ -123,6 +124,22 @@ Helm
 ------
 
 Kubernetesのパッケージマネージャ。Podをパッケージとして運用する。
+
+Hyperkube
+---------
+
+Kubernetesを構成するコンポーネントが全部まとまったもの。
+``hyperkube apiserver`` のようにサブコマンドでコンポーネントを実行する。
+
+Kubeadm
+--------
+
+良くわからない。構築するための便利ツール？
+
+kube-dns
+---------
+
+Podが起動や移動した時に追従してくれるDNS。
 
 Kubectl
 =======
