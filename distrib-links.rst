@@ -13,6 +13,14 @@
 * `分散ロックという名の過ち <http://kumagi.hatenablog.com/entry/distributed_lock>`_
 * `マイクロサービスのアンチパターンとパターン <https://www.infoq.com/jp/news/2018/05/microservices-anti-patterns>`_
 
+合意形成
+========
+
+Paxos+Raft
+-----------
+
+* `ざっくり理解するPaxos <http://matope.hatenablog.com/entry/2018/05/13/204749>`_
+
 評価
 =====
 
