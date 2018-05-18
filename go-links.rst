@@ -62,6 +62,7 @@ GC
 * `GolangのGCを追う <https://deeeet.com/writing/2016/05/08/gogc-2016/>`_
 * `Golangの新しいGCアルゴリズム Transaction Oriented Collector <https://deeeet.com/writing/2016/06/29/toc/>`_
 * `mgc.go <https://golang.org/src/runtime/mgc.go>`_
+* `Go言語のリアルタイムGC 理論と実践 <https://postd.cc/golangs-real-time-gc-in-theory-and-practice/>`_
 
 コンテナ
 --------
