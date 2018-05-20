@@ -60,3 +60,22 @@ Goの標準ライブラリや *golang.org/x* パッケージなどは修正BSD�
 * Goのコードに手を加えた場合のCopyrightはGo Authorsとは別に追加する？
 
 .. todo:: バイナリ配布の場合はどうする？
+
+net/http
+========
+
+MaxIdleConns, MaxIdleConnsPerHost
+---------------------------------
+
+MaxIdleConnsは、デフォルトでは100で、0にすると無制限となる。
+これはホストにかかわらず全体で使い回されるコネクションの数。
+
+MaxIdleConnsPerHostはホスト単位で使い回すコネクションの数。
+
+これらの値を超える場合、
+例えばMaxIdleConnsPerHost=1で2つ以上のリクエストを実行すると、
+ブロックするのではなく新しく接続を行い、そのままリクエストを終える。
+ただし、処理が終わった後は、MaxIdleConsPerHost=1なので、
+1本だけ残してあとの接続は閉じる。
+
+httptrace.GotConnで値を出力すると使い回されたかどうかがわかる。
