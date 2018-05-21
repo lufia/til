@@ -6,6 +6,25 @@ JavaScriptとかWeb
 
 最近の書き方についていけてないので少しずつ。
 
+開発ツール
+==========
+
+Gulp
+	タスクランナー
+
+webpack
+	jsファイルをバンドルする
+
+Babel
+	ES6トランスパイラ
+
+	webpackから使う
+
+PostCSS
+	CSS生成
+
+	webpackから使うけど、gulpからも使えるらしい
+
 Fetch API
 ==========
 
