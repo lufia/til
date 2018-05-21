@@ -94,6 +94,11 @@ NIX
 
 純関数型OSとは別のもの。
 
+それ以外
+========
+
+* `Go / Plan 9 <https://github.com/golang/go/wiki/Plan9>`_
+
 関連ペーパー
 =============
 
