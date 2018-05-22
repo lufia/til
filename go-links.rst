@@ -77,6 +77,11 @@ HTTP
 * `Goでnet/httpを使う時のこまごまとした注意 <https://qiita.com/ono_matope/items/60e96c01b43c64ed1d18>`_
 * `Goのリバースプロキシーでレスポンスを書き換える <https://qiita.com/shibukawa/items/55f64d81ea6ac802dd15>`_
 
+context
+--------
+
+* `なぜContextを構造体に含めてはいけないのか、またそれが許される状況について <https://qiita.com/sonatard/items/d97279086b24e588a82d>`_
+
 コードの書き方
 ==============
 
@@ -85,6 +90,7 @@ HTTP
 
 * `パッケージ名(Package names) <https://www.ymotongpoo.com/works/goblog-ja/post/package-names/>`_
 
+* `Go Proverbsを勉強がてら和訳して少し解説した <http://nametake-1009.hatenablog.com/entry/2016/12/11/203328>`_
 * `understanding nil <https://speakerdeck.com/campoy/understanding-nil>`_
 * `understanding the interface <https://speakerdeck.com/campoy/understanding-the-interface>`_
 * `なぜContextを構造体に含めてはいけないのか、またそれが許される状況について <https://qiita.com/sonatard/items/d97279086b24e588a82d>`_
@@ -116,6 +122,7 @@ HTTP
 * `Errors are values <https://blog.golang.org/errors-are-values>`_
 * `Error handling in Upspin <https://commandcenter.blogspot.jp/2017/12/error-handling-in-upspin.html>`_
 * `Go言語のFunctional Option Pattern <https://qiita.com/weloan/items/56f1c7792088b5ede136>`_
+* `Self-referential functions and the design of options <https://commandcenter.blogspot.jp/2014/01/self-referential-functions-and-design.html>`_
 
 考え方
 ------
