@@ -114,7 +114,9 @@ GitHubからdotfilesリポジトリをcloneして、必要な場所にリンク�
 
 	$ git clone git@github.com:lufia/dotfiles
 	$ cd dotfiles
-	$ ln dot.inputrc ~/.inputrc
+	$ ln -s $(relpath)/dot.inputrc ~/.inputrc
+
+ハードリンクを使うと ``git pull`` などでリンクが切れる。
 
 Plan 9環境
 ==========
