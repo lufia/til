@@ -7,6 +7,15 @@ Google Cloud SDK
 一般
 ====
 
+設定ファイルの場所
+-----------------
+
+``gcloud`` の設定
+	*~/.config/gcloud/*
+
+``gsutil`` の設定
+	*~/.gsutil/*
+
 リリース情報
 ------------
 
@@ -18,6 +27,27 @@ Google Cloud SDK
 ログインする::
 
 	$ gcloud auth login
+
+コンフィグ関連
+--------------
+
+ログインやプロジェクトなどをコンフィグとして切り替えることができる。
+
+リスト取得::
+
+	$ gcloud config configurations list
+
+追加::
+
+	$ gcloud config configurations create $NAME
+
+切り替え::
+
+	$ gcloud config configurations activate $NAME
+
+削除::
+
+	$ gcloud config configurations delete $NAME
 
 プロジェクト関連
 ----------------
