@@ -15,6 +15,8 @@ Gopher::
 ========
 
 * `[翻訳]Go言語の構文がC言語から大胆に変わった理由 <https://qiita.com/hachi8833/items/7c43a93130fcce3e308f>`_
+* `Goにおける文字列、バイト、ルーンと文字 <https://www.ymotongpoo.com/works/goblog-ja/post/strings/>`_
+* `配列、スライス（と文字列）：’append’の動作原理 <https://www.ymotongpoo.com/works/goblog-ja/post/slices/>`_
 * `Goのスライスの内部実装 <http://jxck.hatenablog.com/entry/golang-slice-internals>`_
 * `Go Range Loop Internals <https://garbagecollected.org/2017/02/22/go-range-loop-internals/>`_
 * `Issue 9 <https://github.com/golang/go/issues/9>`_
@@ -81,6 +83,12 @@ context
 --------
 
 * `なぜContextを構造体に含めてはいけないのか、またそれが許される状況について <https://qiita.com/sonatard/items/d97279086b24e588a82d>`_
+
+golang.org/x
+-------------
+
+* `Goにおける言語とロケールのマッチング <https://www.ymotongpoo.com/works/goblog-ja/post/matchlang/>`_
+* `Goでの文字列の正規化 <https://www.ymotongpoo.com/works/goblog-ja/post/normalization/>`_
 
 コードの書き方
 ==============
