@@ -52,3 +52,11 @@ Docker for macのストレージ
 
 サイズを変更するにはDockerのPreferencesを開き、
 Diskタブの **Resize disk image** を使う。
+
+Dockerイメージ
+--------------
+
+* `Dockerイメージ管理の内部構造 <https://www.slideshare.net/enakai/docker-43975886>`_
+
+device mapperの容量は10GB制限がある。
+増やしたければ ``--storage-opt dm.basesize=xxG`` オプションを使う。
