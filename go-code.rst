@@ -144,6 +144,37 @@ Goの標準ライブラリや *golang.org/x* パッケージなどは修正BSD�
 
 * `Go言語のFunctional Option Pattern <https://qiita.com/weloan/items/56f1c7792088b5ede136>`_
 
+flag
+=====
+
+カンマを配列にするオプション::
+
+	type stringSlice []string
+	
+	func newStringSlice(val []string, p *[]string) *stringSlice {
+		*p = val
+		return (*stringSlice)(p)
+	}
+	
+	func (a *stringSlice) Set(s string) error {
+		v := strings.Split(s, ",")
+		*a = stringSlice(v)
+		return nil
+	}
+	
+	func (a *stringSlice) Get() interface{} {
+		return []string(*a)
+	}
+	
+	func (a *stringSlice) String() string {
+		return strings.Join([]string(*a), ",")
+	}
+
+	var slice []string
+	func init() {
+		flag.Var(newStringSlice([]string{"default"}, &slice), "a", "sample")
+	}
+
 net/http
 ========
 

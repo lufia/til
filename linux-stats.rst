@@ -32,3 +32,25 @@ run queueのみを調べる方法はなさそう。
 * `vmstatの見方と考え方 <http://piro791.blog.so-net.ne.jp/2008-10-02>`_
 * `LinuxのI/OやCPUの負荷とロードアベレージの関係を詳しく見てみる <https://qiita.com/kunihirotanaka/items/21194f77713aa0663e3b>`_
 * `I/O負荷の正確な状況はiowaitでは分かりません <https://qiita.com/kunihirotanaka/items/a536ee35d589027e4a5a>`_
+
+メモリ
+------
+
+VSS(VSZ)
+	プロセスのサイズ
+
+	``malloc`` で割り当てられたけど、
+	まだ書き込まれていない(ページが割り当てられていない)アドレスも含む
+
+RSS
+	プロセスが使用するアドレスサイズ
+
+	共有ライブラリのアドレスを含む
+
+PSS
+	RSSと似ているが、共有ライブラリは共有するプロセス数で割る
+
+USS
+	プロセスが使用する固有のメモリサイズ
+
+* `VSS RSS PSS USS の説明 <http://gntm-mdk.hatenadiary.com/entry/2015/01/21/231258>`_
