@@ -18,6 +18,7 @@ Gopher::
 * `Goにおける文字列、バイト、ルーンと文字 <https://www.ymotongpoo.com/works/goblog-ja/post/strings/>`_
 * `配列、スライス（と文字列）：’append’の動作原理 <https://www.ymotongpoo.com/works/goblog-ja/post/slices/>`_
 * `Goのスライスの内部実装 <http://jxck.hatenablog.com/entry/golang-slice-internals>`_
+* `How the Go runtime implements maps efficiently (without generics) <https://dave.cheney.net/2018/05/29/how-the-go-runtime-implements-maps-efficiently-without-generics>`_
 * `Go Range Loop Internals <https://garbagecollected.org/2017/02/22/go-range-loop-internals/>`_
 * `Issue 9 <https://github.com/golang/go/issues/9>`_
 
