@@ -175,6 +175,32 @@ flag
 		flag.Var(newStringSlice([]string{"default"}, &slice), "a", "sample")
 	}
 
+net
+=====
+
+DNSサーバを指定する
+-------------------
+
+標準では、DNSサーバは */etc/resolv.conf* などから読み込み、それが使われる。
+プログラムの中で *resolv.conf* ではないDNSサーバを参照したい場合は、
+サーバを直接変更する方法は用意されていないので、
+``net.Resolver`` の ``Dial`` を設定して無理やり向きを変える::
+
+	func dial(ctx context.Context, network, address string) (net.Conn, error) {
+		var d net.Dialer
+		return d.DialContext(ctx, network, "8.8.8.8:53")
+	}
+
+	func main() {
+		var resolver net.Resolver
+		resolver.PreferGo = true
+    	resolver.Dial = dial
+		addrs, err := resolver.LookupHost("www.google.com")
+	}
+
+``net.LookupXxx`` は ``net.DefaultResolver`` を参照するので、
+他の動作に影響がなければ、``DefaultResolver.Dial`` を置き換えても良い。
+
 net/http
 ========
 
