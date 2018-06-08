@@ -1,6 +1,8 @@
 Goの書き方関係
 ==============
 
+.. highlight:: go
+
 並行処理パターン
 ----------------
 
@@ -194,7 +196,7 @@ DNSサーバを指定する
 	func main() {
 		var resolver net.Resolver
 		resolver.PreferGo = true
-    	resolver.Dial = dial
+		resolver.Dial = dial
 		addrs, err := resolver.LookupHost("www.google.com")
 	}
 
