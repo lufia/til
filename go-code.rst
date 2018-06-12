@@ -222,6 +222,44 @@ MaxIdleConnsPerHostはホスト単位で使い回すコネクションの数。
 
 httptrace.GotConnで値を出力すると使い回されたかどうかがわかる。
 
+net/http/httputil
+------------------
+
+新しい ``ReverseProxy`` は ``NewSingleHostReverseProxy`` を提供しているが、
+これは以下のような *X-Forwarded-xx* に対応していない。
+
+X-Forwarded-Proto
+	クライアントがアクセスしてきたオリジナルのプロトコル(httpsなど)
+
+X-Forwarded-Host
+	クライアントがアクセスしてきたオリジナルのホスト名
+
+X-Forwarded-Port
+	クライアントがアクセスしてきたオリジナルのポート番号(あれば)
+
+なので自分で ``ReverseProxy.Director`` を書くと良い::
+
+	p := &httputil.ReverseProxy{
+		Director: func(req *http.Request) {
+			host, port, err := net.SplitHostPort(req.Host)
+			if err != nil {
+				// can't parse hostname: no port or many colons
+				host = req.Host
+			}
+			req.Header.Set("X-Forwarded-Host", host)
+			if port != "" {
+				req.Header.Set("X-Forwarded-Port", "port")
+			}
+			if req.TLS != nil {
+				req.Header.Set("X-Forwarded-Proto", "https")
+			} else {
+				req.Header.Set("X-Forwarded-Proto", "http")
+			}
+
+			// 以後はNewSingleHostReverseProxyそのまま
+		},
+	}
+
 たまに使うと便利な関数
 ======================
 
