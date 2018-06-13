@@ -195,7 +195,43 @@ Google Cloud SDK
 Node.js
 -------
 
-最近のツールはNode.js製のものが増えたので `nvm <https://github.com/creationix/nvm>`_ を使って入れる::
+`n <https://github.com/tj/n>`_ の方がシンプルだったのでこれにする::
+
+	$ mkdir -p ~/src/github.com/tj
+	$ cd ~/src/github.com/tj
+	$ git clone https://github.com/tj/n.git
+	$ cd n
+	$ make install PREFIX=~
+
+.. code-block:: bash
+
+以下の環境変数を *.bash_profile* などに設定する::
+
+	export N_PREFIX=~/pkg/nodejs
+	export NPM_CONFIG_USERCONFIG=~/lib/npmrc
+	export PATH=$PATH:~/pkg/nodejs/bin
+	export MANPATH=$(manpath):~/pkg/nodejs/share/man
+
+.. code-block:: bash
+
+*~/lib/npmrc* は好きなように設定するが、``prefix`` は *N_PREFIX* と合わせる::
+
+	cache = ~/pkg/npm
+	prefix = ~/pkg/nodejs
+
+あとはNodeをインストールする::
+
+	$ n --latest # 利用可能な最新版を調べる
+	$ n latest   # 最新版をインストール
+	$ n prune    # 使っていないバージョンを削除
+
+Node.js(nvm)
+-------------
+
+`nvm <https://github.com/creationix/nvm>`_ も便利だったけど、
+複数バージョンを使うことはほぼ無いのでやめた。
+
+入れた時のメモ::
 
 	$ cd ~/pkg
 	$ git clone https://github.com/creationix/nvm
