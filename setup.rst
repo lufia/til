@@ -225,6 +225,8 @@ Node.js
 	$ n latest   # 最新版をインストール
 	$ n prune    # 使っていないバージョンを削除
 
+* `全部知ってる？ npmを使いこなすために絶対知っておきたい10のこと <https://www.webprofessional.jp/10-npm-tips-and-tricks/>`_
+
 Node.js(nvm)
 -------------
 
