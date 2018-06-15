@@ -83,7 +83,7 @@ Implicit Grant
 	よくわからない
 
 Resource Owner Password Credentials
-	よくわからない
+	普通のIDパスワード認証
 
 Client Credentials
 	クライアントIDとシークレットを使うやつ
@@ -97,3 +97,19 @@ Goパッケージ
 
 * `golang.org/x/oauth2 <https://godoc.org/golang.org/x/oauth2>`_
 * `golang.org/x/oauth2/clientcredentials <https://godoc.org/golang.org/x/oauth2/clientcredentials>`_
+
+OpenSSLコマンドメモ
+-------------------
+
+.. code-block:: bash
+
+PKCS8でECDSA P-256秘密鍵を生成::
+
+	openssl ecparam -genkey -name prime256v1 -noout |
+	openssl pkcs8 -topk8 -nocrypt -out key.p8
+
+.. code-block:: bash
+
+秘密鍵から公開鍵を生成::
+
+	openssl ec -in key.p8 -pubout
