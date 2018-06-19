@@ -128,8 +128,14 @@ golang.org/x
 パターン
 --------
 
+エラー関連
+
 * `Errors are values <https://blog.golang.org/errors-are-values>`_
 * `Error handling in Upspin <https://commandcenter.blogspot.jp/2017/12/error-handling-in-upspin.html>`_
+* `Failure is your Domain <https://middlemost.com/failure-is-your-domain/>`_
+
+オプション
+
 * `Go言語のFunctional Option Pattern <https://qiita.com/weloan/items/56f1c7792088b5ede136>`_
 * `Self-referential functions and the design of options <https://commandcenter.blogspot.jp/2014/01/self-referential-functions-and-design.html>`_
 
