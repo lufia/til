@@ -79,15 +79,48 @@ Babel
 -----
 
 ``async`` やアロー関数など、新しめのJavaScript構文を使えるようにするもの。
+2018年6月現在、Babel 7対応の ``babel-loader`` は8.0.0-beta.4なので、
+なるべく新しいベータ版を探して入れる。
 
 .. code-block:: console
 
-	$ npm install -D babel-core babel-loader babel-preset-env
+	$ npm info babel-loader versions
+	[ '4.0.0',
+	  ...
+	  '8.0.0-beta.4' ]
+	$ npm install -D @babel/core @babel/preset-env babel-loader@8.0.0-beta.4
 
-*webpack.config.js* を作成::
+また、*webpack.config.js* をES6で書くために ``@babel/register`` も入れておく。
+入れておくだけで *\*.babel.js* にマッチしたファイルをBabel経由で扱うため、
+*webpack.config.babel.js* で ``import`` などの新しい構文が使えるようになる。
 
-	//export default {
-	module.exports = {
+.. code-block:: console
+
+	$ npm install -D @babel/register
+
+*package.json* でBabelのプリセットを指定する。
+本当は *.babelrc* に書くものだが、隠しファイルが増えると
+見通し悪くなるので、*package.json* に書く方が好み。
+
+.. code-block:: json
+
+	{
+	  "babel": {
+	    "presets": ['@babel/preset-env']
+	  }
+	}
+
+これを書いていない場合、*\*.babel.js* ファイルで ``import`` を使った時に、
+以下のようなエラーになる。
+
+	import xxx from 'xxx'
+	       ^^^
+
+	SyntaxError: Unexpected identifier
+
+一通り準備ができたら、*webpack.config.babel.js* を作成::
+
+	export default {
 	  mode: 'development',
 	  entry: './src/app.js',
 	  module: {
@@ -98,9 +131,7 @@ Babel
 	          {
 	            loader: 'babel-loader',
 	            options: {
-	              presets: [
-	                ['env', {'modules': false}]
-	              ]
+	              presets: ['@babel/preset-env']
 	            }
 	          }
 	        ]
@@ -114,9 +145,9 @@ Babel
 .. code-block:: json
 
 	{
-		"scripts": {
-			"build": "webpack"
-		}
+	  "scripts": {
+	    "build": "webpack"
+	  }
 	}
 
 これで ``npm run build`` が使える。
@@ -127,6 +158,7 @@ Babel
 	$ npm run build
 
 * `BabelでES2018環境の構築(React, Vue, Three.js, jQueryのサンプル付き) <https://ics.media/entry/16028>`_
+* `Webpack with Babel 7 <https://medium.com/oredi/b61f7caa9565>`_
 
 *webpack.config.js* では ``entry`` で1つだけファイルを選択しているけど、
 複数のファイルがある場合はどうするんだろう。
@@ -136,21 +168,24 @@ PostCSS
 
 これも *webpack* から使う方が良さそう。
 *postcss-cssnext* は *postcss-preset-env* に置き換えられた。
+ES6の ``import`` 文が使えた方が便利なので ``babel-register`` も入れると良い。
 
 .. code-block:: console
 
 	$ npm install -D style-loader css-loader postcss-loader \
 		postcss-preset-env postcss-import
 
-*webpack.config.js* にもルールを追加する。
+*webpack.config.babel.js* にもルールを追加する。
+``@babel/register`` を入れていない場合は、
+コメントアウトしている方の書き方(ES5)しか使えない。
 
 .. code-block:: js
 
-	//import postcssPresetEnv from 'postcss-preset-env'
-	const postcssPresetEnv = require('postcss-preset-env')
+	//const postcssPresetEnv = require('postcss-preset-env')
+	import postcssPresetEnv from 'postcss-preset-env'
 
-	//export default {
-	module.exports = {
+	//module.exports = {
+	export default {
 	  devtool: 'source-map',
 	  module: {
 	    rules: [
@@ -172,7 +207,9 @@ PostCSS
 	              ident: 'postcss',
 	              sourceMap: true,
 	              plugins: () => [
-	                postcssPresetEnv()
+	                postcssPresetEnv({
+	                  browsers: 'last 2 versions'
+	                })
 	              ]
 	            }
 	          }
@@ -192,13 +229,53 @@ PostCSS
 
 * `postcss-preset-env <https://github.com/csstools/postcss-preset-env>`_
 
+PostCSS(コマンドライン)
+------------------------
+
 *npm-scripts* から直接使う場合はコマンドラインをインストールする。
 
 .. code-block:: console
 
 	$ npm install -D postcss-cli
 
+設定したい場合は、*postcss.config.js* を書けばいいらしい。
+
 * `スタイルシート(CSSやSass)を取り込む方法 <https://ics.media/entry/17376>`_
+
+React
+======
+
+Reactのモジュールを追加。Babelを使っている場合はローダも追加。
+
+.. code-block:: console
+
+	$ npm install -D react react-dom
+	$ npm install -D @babel/preset-react
+
+*webpack.config.babel.js* の ``presets`` にReactの設定を追加::
+
+	export default {
+	  module: {
+	    rules: [
+	      {
+	        test: /\.jsx?$/,
+	        options: {
+	          presets: ['@babel/preset-env', '@babel/preset-react']
+	        }
+	      }
+	    ]
+	  },
+	  resolve: {
+	    extensions: ['.js', '.jsx']
+	  }
+	}
+
+これであとは普通に書けばビルドできる::
+
+	function hello() {
+		let f = () => (<div>hello</div>)
+		console.log(f())
+	}
 
 Fetch API
 ==========
