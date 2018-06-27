@@ -242,6 +242,42 @@ PostCSS(コマンドライン)
 
 * `スタイルシート(CSSやSass)を取り込む方法 <https://ics.media/entry/17376>`_
 
+HTML
+----
+
+HTMLも *src* 以下で管理し、webpackの対象にする。
+以下どちらもwebpackのプラグイン。
+
+html-webpack-plugin
+	webpackで生成したJavaScriptをロードするための<script>タグを自動挿入する
+
+script-ext-html-webpack-plugin
+	<script>タグの属性(deferなど)をカスタマイズする
+
+npmでインストールする。
+
+.. code-block:: console
+
+	$ npm install -D html-webpack-plugin script-ext-html-webpack-plugin
+
+*webpack.config.babel.js* にプラグインを設定する。
+
+	import HtmlWebpackPlugin from 'html-webpack-plugin'
+	import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
+
+	export default {
+	  module: {
+	    plugins: [
+	      new HtmlWebpackPlugin({
+	        template: 'src/index.html'
+	      }),
+	      new ScriptExtHtmlWebpackPlugin({
+	        defaultAttribute: 'defer'
+	      })
+	    ],
+	  }
+	}
+
 React
 ======
 
