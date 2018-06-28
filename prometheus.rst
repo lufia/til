@@ -4,6 +4,9 @@ Prometheus関連
 
 .. highlight:: yaml
 
+構成
+======
+
 Prometheus 2.0へのアップグレード
 --------------------------------
 
@@ -49,3 +52,11 @@ ExporterのURLを変更する
 	    scrape_timeout: 50s
 	    static_configs:
 	      - targets: [...]
+
+開発
+=====
+
+古いメトリクスはガイドラインに反しているけど、
+新しく追加するものは以下のガイドラインに沿って名前をつけるべき。
+
+* `Metric and label naming <https://prometheus.io/docs/practices/naming/>`_
