@@ -21,12 +21,46 @@ Babel
 	webpackから使う
 
 PostCSS
-	CSS生成
+	将来の標準CSSを使えるようにトランスパイルする
+
+	* automatic vendor prefixes
+	* custom prpoerties, var
+	* custom media queries
+	* custom selectors
 
 	webpackから使うけど、gulpからも使えるらしい
 
 npm-scripts
 	Gulpの代わりに使える
+
+* `cssnextでみる次世代CSSとPostCSS <http://blog.yucchiy.com/2015/04/22/cssnext-postcss-for-nextgeneration-of-css/>`_
+
+CSS命名規則
+===========
+
+過去にいくつか存在したらしいけど、今はこの2つを覚えておけば良さそう。
+
+BEM
+	Block-Element-Modifierを繋げて書く
+
+FLOCSS
+	Foundation, Layout, Objectでディレクトリも分けて書く
+
+* `hiloki/flocss: CSS organization methodology <https://github.com/hiloki/flocss>`_
+* `OOCSS, BEM, SMACSS, FLOCSS, RSCSSを比較して自分にあった設計思想をみつける <https://kuroeveryday.blogspot.com/2017/03/css-structure-and-rules.html>`_
+
+Web Components
+==============
+
+CSSの影響をShadow DOMに隔離できるから良さそうなんだけど。
+
+* `Web Componentsで近未来のフロントエンド開発 <https://nulab-inc.com/ja/blog/cacoo/web-components/>`_
+
+最近はほとんどネイティブで動作するけど、
+Custom ElementsとShadow DOMは、FirefoxとEdgeでPolyfillが必要。
+
+* `webcomponents.org <https://www.webcomponents.org>`_
+* `webcomponentsjs <https://github.com/webcomponents/webcomponentsjs>`_
 
 npm-scriptsでの設定例
 =====================
