@@ -372,3 +372,10 @@ include
 	fetch('/details', {
 		credentials: 'same-origin'
 	})
+
+Thread
+=======
+
+Node.js 10.5.0から、worker_threadsが入ったらしい。
+
+* `Node.jsにworkerが入った <http://blog.hiroppy.me/entry/worker_threads>`_
