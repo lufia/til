@@ -301,15 +301,16 @@ npmでインストールする。
 
 	export default {
 	  module: {
-	    plugins: [
-	      new HtmlWebpackPlugin({
-	        template: 'src/index.html'
-	      }),
-	      new ScriptExtHtmlWebpackPlugin({
-	        defaultAttribute: 'defer'
-	      })
-	    ],
-	  }
+	    ..
+	  },
+	  plugins: [
+	    new HtmlWebpackPlugin({
+	      template: 'src/index.html'
+	    }),
+	    new ScriptExtHtmlWebpackPlugin({
+	      defaultAttribute: 'defer'
+	    })
+	  ]
 	}
 
 React
