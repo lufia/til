@@ -46,3 +46,20 @@ app.yamlのhandlersマッチング
 
 のように書くと、先に ``/.*`` が評価されて、``/_ah/queue/.*`` に届かない。
 広い範囲にマッチするルールは、下に書くように注意する。
+
+ファイル数多すぎエラーの回避
+----------------------------
+
+``dev_appserver.py`` を実行した時、以下のエラーが発生する場合がある。
+
+	UserWarning: There are too many files in your application for changes in all of them to be monitored. You may have to restart the development server to see some changes to your files.
+	There are too many files in your application for
+
+ファイル数が多すぎることが問題なので、vendorディレクトリなどを無視する::
+
+	runtime: go
+
+	skip_files:
+	- .*node_modules
+
+* `GAEの開発サーバで監視対象ファイルが多すぎてオートリロードが無効になる場合の対応方法 <https://qiita.com/nirasan/items/547c142f8676015c2d95>`_

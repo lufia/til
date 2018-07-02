@@ -353,6 +353,20 @@ Reactのモジュールを追加。Babelを使っている場合はローダも�
 		console.log(f())
 	}
 
+Context API
+------------
+
+* `Reactの新Context APIとRedux is deadはどう関係するのか？ <https://medium.com/@terrierscript/6d12a32f2f0c>`_
+
+Redux
+=======
+
+.. code-block:: console
+
+インストール。
+
+	$ npm install -D redux react-redux
+
 Fetch API
 ==========
 
