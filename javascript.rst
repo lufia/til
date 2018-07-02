@@ -294,7 +294,7 @@ npmでインストールする。
 
 	$ npm install -D html-webpack-plugin script-ext-html-webpack-plugin
 
-*webpack.config.babel.js* にプラグインを設定する。
+*webpack.config.babel.js* にプラグインを設定する::
 
 	import HtmlWebpackPlugin from 'html-webpack-plugin'
 	import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
@@ -329,9 +329,14 @@ Reactのモジュールを追加。Babelを使っている場合はローダも�
 	    rules: [
 	      {
 	        test: /\.jsx?$/,
-	        options: {
-	          presets: ['@babel/preset-env', '@babel/preset-react']
-	        }
+	        use: [
+	          {
+	            loader: 'babel-loader',
+	            options: {
+	              presets: ['@babel/preset-env', '@babel/preset-react']
+	            }
+	          }
+	        ]
 	      }
 	    ]
 	  },
