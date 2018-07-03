@@ -6,8 +6,11 @@ JavaScriptとかWeb
 
 最近の書き方についていけてないので少しずつ。
 
+用語など
+========
+
 開発ツール
-==========
+----------
 
 Gulp
 	タスクランナー
@@ -36,7 +39,7 @@ npm-scripts
 * `cssnextでみる次世代CSSとPostCSS <http://blog.yucchiy.com/2015/04/22/cssnext-postcss-for-nextgeneration-of-css/>`_
 
 CSS命名規則
-===========
+-----------
 
 過去にいくつか存在したらしいけど、今はこの2つを覚えておけば良さそう。
 
@@ -48,6 +51,22 @@ FLOCSS
 
 * `hiloki/flocss: CSS organization methodology <https://github.com/hiloki/flocss>`_
 * `OOCSS, BEM, SMACSS, FLOCSS, RSCSSを比較して自分にあった設計思想をみつける <https://kuroeveryday.blogspot.com/2017/03/css-structure-and-rules.html>`_
+
+デザイン手法
+------------
+
+粒度が違うので、まとめていいのか分からないけど。
+
+マテリアルデザイン
+	紙とインクを模したデザインガイドライン
+
+
+Atomic Design
+	Atoms, Molecules, Organisms, Templates, Pagesに分割する手法
+
+* `MATERIAL DESIGN <https://material.io/design/>`_
+* `マテリアルデザインとは？作り方とガイドラインまとめ <https://saruwakakun.com/html-css/material>`_
+* `最近のフロントエンドのコンポーネント設計に立ち向かう <https://qiita.com/seya/items/8814e905693f00cdade2>`_
 
 Web Components
 ==============
@@ -353,6 +372,23 @@ Reactのモジュールを追加。Babelを使っている場合はローダも�
 		console.log(f())
 	}
 
+PropTypes
+----------
+
+``Component`` クラスの ``propTypes`` で必須プロパティなどの設定ができる。
+15.5からは、``prop-types`` モジュールに分離された::
+
+	import React from 'react'
+	import PropTypes from 'prop-types'
+	class C extends React.Component {
+		render() {
+			return <div>{htis.props.text}</div>
+		}
+	}
+	C.propTypes = {
+		text: PropTypes.string.isRequired
+	}
+
 Context API
 ------------
 
@@ -366,6 +402,24 @@ Redux
 インストール。
 
 	$ npm install -D redux react-redux
+
+確かにこれが一番わかりやすかった。
+
+* `たぶんこれが一番分かりやすいと思います React + Redux のフロー図解 <https://qiita.com/mpyw/items/a816c6380219b1d5a3bf>`_
+
+足りない部分はこちら。
+
+* `Reduxでコンポーネントを再利用する <https://qiita.com/kuy/items/869aeb7b403ea7a8fd8a>`_
+
+便利関数がなかった頃の話。裏の動きはわかりやすい。
+
+* `Reduxの実装とReactとの連携を超シンプルなサンプルを使って解説 <https://mae.chab.in/archives/2885>`_
+
+マテリアルデザイン
+==================
+
+* `material-components-web <https://github.com/material-components/material-components-web>`_
+* `material-components-web-react <https://github.com/material-components/material-components-web-react>`_
 
 Fetch API
 ==========
@@ -399,3 +453,27 @@ Thread
 Node.js 10.5.0から、worker_threadsが入ったらしい。
 
 * `Node.jsにworkerが入った <http://blog.hiroppy.me/entry/worker_threads>`_
+
+Syntax
+========
+
+スプレッド構文とレスト構文
+---------------------------
+
+`Stack Overflow <https://stackoverflow.com/questions/34401098/remove-a-property-in-an-object-immutably>`_ より::
+
+	const receipt = {
+		shop: 'FamillyMart',
+		date: '2018-07-01',
+		items: {
+			evian: 120,
+			salad: 200,
+			chicken: 180
+		}
+	}
+	// chickenを削除する
+	const { ['items']: items, ...others } = receipt
+	const { ['chicken']: removedItem, ...newItems } = items
+	const newReceipt = { ...others, ['items']: newItems }
+
+* `スプレッド構文 <https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax>`_
