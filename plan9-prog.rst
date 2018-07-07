@@ -7,9 +7,9 @@ Plan 9
 呼び出し規約
 =============
 
-http://herumi.in.coocan.jp/prog/x64.html
-https://9p.io/sys/doc/asm.html
-https://qiita.com/edo_m18/items/83c63cd69f119d0b9831
+* http://herumi.in.coocan.jp/prog/x64.html
+* https://9p.io/sys/doc/asm.html
+* https://qiita.com/edo_m18/items/83c63cd69f119d0b9831
 
 スタック
 --------
@@ -51,6 +51,11 @@ x86の場合は4byteだが、x64の場合は8byteで固定。
 ``6c -S`` の結果::
 
 	TEXT calc+0(SB),0,$24
+		// 8(FP) = c
+		// 0(FP) = n
+		// -8(SP) = v1
+		// -16(SP)= v2
+		// -24(SP)= v?
 		LEAQ	v1+-8(SP),AX
 		MOVQ	$100,(AX)
 		LEAQ	v2+-16(SP),AX
@@ -63,6 +68,10 @@ x86の場合は4byteだが、x64の場合は8byteで固定。
 		RET
 
 	TEXT main+0(SB),0,$32
+		// 24(SP)= r
+		// 16(SP)= v
+		// 8(SP) = arg1:n
+		// 0(SP) = arg2:c -> BP
 		MOVL	$20,BP
 		MOVL	$1,CX
 		MOVL	CX,8(SP)
@@ -84,21 +93,21 @@ R8..R15(6a)
 PC(8a, 6a)
 	プログラムカウンタ
 
+	EIP, RIPに相当
+
 BP(8a, 6a)
-	base pointer
+	スタックベースポインタレジスタ
 
 SB(8a, 6a)
-	static base
+	スタティック領域の先頭を指す擬似レジスタ
 
-	pseudo-register
-	
 SP(8a, 6a)
-	stack pointer
+	スタックの先頭を指す擬似レジスタ
+
+	ESP, RSPに相当
 
 FP(8a, 6a)
-	frame pointer
-
-	pseudo-register
+	フレームの先頭を指す擬似レジスタ
 
 F0..F7(8a)
 	387の浮動小数点レジスタ
@@ -112,6 +121,7 @@ X0..X15(6a)
 Y0..Y15(6a)
 	YMMレジスタ
 
+* `x86/x86_64関数呼び出しチートシートを書いた <http://d.sunnyone.org/2012/09/x86x8664.html>`_
 * `x86の浮動小数計算とSIMD命令の変遷 <https://qiita.com/lpha_z/items/eafa9c13532c9ac80d4b>`_
 
 ``MOVx`` 命令などの **x** によってレジスタのサイズが変わるので、
