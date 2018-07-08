@@ -10,6 +10,7 @@ Plan 9
 * http://herumi.in.coocan.jp/prog/x64.html
 * https://9p.io/sys/doc/asm.html
 * https://qiita.com/edo_m18/items/83c63cd69f119d0b9831
+* http://komaken.me/blog/2013/08/31/c言語コールスタックスタックフレームの仕組み/
 
 スタック
 --------
@@ -68,10 +69,10 @@ x86の場合は4byteだが、x64の場合は8byteで固定。
 		RET
 
 	TEXT main+0(SB),0,$32
-		// 24(SP)= r
-		// 16(SP)= v
-		// 8(SP) = arg1:n
-		// 0(SP) = arg2:c -> BP
+		// 8(SP)  = arg1:n
+		// 0(SP)  = arg2:c -> BP
+		// -8(SP) = r
+		// -16(SP)= v
 		MOVL	$20,BP
 		MOVL	$1,CX
 		MOVL	CX,8(SP)
