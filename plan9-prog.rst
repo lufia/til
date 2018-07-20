@@ -4,6 +4,26 @@ Plan 9
 
 .. highlight:: c
 
+APE
+=====
+
+システムコール
+---------------
+
+APE環境では、システムコールはアンダースコアで開始して全て大文字となっている。
+例えば ``int read(int, void*, long)`` は、``int _READ(int, void*, long)`` で呼び出す。
+
+これらは */sys/src/ape/lib/ap/syscall/mkfile* によって、
+*/sys/src/libc/9syscall/mkfile* から作られている。
+
+.. todo:: apはAPEのことだろうか
+
+Cコンパイラ
+-----------
+
+APEの場合、``ape/pcc`` を使うが、これは ``8c`` (386の場合)のフロントエンド。
+``#include`` のサーチパスなどをAPE用に設定して、``cpp`` と ``8c`` を実行する。
+
 呼び出し規約
 =============
 
