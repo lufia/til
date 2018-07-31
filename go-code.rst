@@ -3,6 +3,37 @@ Goの書き方関係
 
 .. highlight:: go
 
+一般的な情報
+=============
+
+モジュールの作成
+-----------------
+
+1. 環境変数 *GO111MODULE* を *on* に設定
+2. パッケージを ``go build`` すると *go.mod* が無ければ作られる
+3. *go.mod* をコミット
+4. セマンティックバージョニングでタグを付ける
+
+*go.mod* と同時に *go.sum* が生成される場合もある。
+これはモジュール(zipファイル)のハッシュ(SHA1?)と *go.mod* のハッシュを持つ。
+コミットしたほうがいいんだろうか。
+
+モジュールの使い方
+-------------------
+
+Go 1.10 までと同じように、``import`` して ``go get`` を実行するだけ。
+
+モジュールのアップデートは、``go get -u`` でマイナーバージョンのアップデート、
+``go get -u=patch`` でパッチバージョンのアップデートを行う。
+
+モジュールファイルはバージョンごとにzipでダウンロードされるため、
+今までのパッケージと別になっていて、*$GOPATH/src/mod* 以下に展開される。
+*$GOPATH/src/mod* の理由は、*$GOPATH* が *$HOME* の人もいるし、
+*$GOPATH/pkg* を無くしたいから、らしい。
+
+* `$GOPATH/src/mod <https://groups.google.com/d/topic/golang-dev/RjSj4bGSmsw/discussion>`_
+* `cmd/go: drop $GOPATH/src <https://github.com/golang/go/issues/4719>`_
+
 並行処理パターン
 ----------------
 
@@ -15,6 +46,9 @@ Goの書き方関係
 
 * `Go Concurrency Patterns: Pipelines and cancellation <https://blog.golang.org/pipelines>`_
 * `or-done-channelでコードの可読性を上げる <http://ymotongpoo.hatenablog.com/entry/2017/12/04/091403>`_
+
+具体的な書き方
+===============
 
 自分のIPアドレスを調べる
 ------------------------
