@@ -16,7 +16,12 @@ Goの書き方関係
 
 *go.mod* と同時に *go.sum* が生成される場合もある。
 これはモジュール(zipファイル)のハッシュ(SHA1?)と *go.mod* のハッシュを持つ。
-コミットしたほうがいいんだろうか。
+*go.mod* を更新するために依存するモジュールの全ソースコードが必要になるのは無駄なので、
+最適化を行うために *go.sum* は存在するらしい。
+
+* `x/vgo: possible no-determinism in updating go.sum <https://github.com/golang/go/issues/26310>`_
+
+GitHub では *.gitignore* に含んでいるリポジトリがいくつかあった。
 
 モジュールの使い方
 -------------------
