@@ -32,12 +32,11 @@ Go 1.10 までと同じように、``import`` して ``go get`` を実行する�
 ``go get -u=patch`` でパッチバージョンのアップデートを行う。
 
 モジュールファイルはバージョンごとにzipでダウンロードされるため、
-今までのパッケージと別になっていて、*$GOPATH/src/mod* 以下に展開される。
-*$GOPATH/src/mod* の理由は、*$GOPATH* が *$HOME* の人もいるし、
-*$GOPATH/pkg* を無くしたいから、らしい。
+今までのパッケージと別になっていて、*$GOPATH/pkg/mod* 以下に展開される。
+Go 1.11 beta2では *$GOPATH/src/mod* だったが、途中で変更された。
 
 * `$GOPATH/src/mod <https://groups.google.com/d/topic/golang-dev/RjSj4bGSmsw/discussion>`_
-* `cmd/go: drop $GOPATH/src <https://github.com/golang/go/issues/4719>`_
+* `cmd/go: drop $GOPATH/pkg <https://github.com/golang/go/issues/4719>`_
 
 並行処理パターン
 ----------------
