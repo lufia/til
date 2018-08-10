@@ -144,6 +144,7 @@ golang.org/x
 
 * `loggingについて話そう <https://qiita.com/methane/items/cedbf546ae2db8a63c3d>`_
 * `C言語プログラミングの覚え書き(改訳) <http://d.hatena.ne.jp/takeda25/20141012/1413116114>`_
+	* `Notes on Programming in C <http://doc.cat-v.org/bell_labs/pikestyle>`_
 
 プロジェクトレイアウト
 ----------------------
