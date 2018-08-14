@@ -223,7 +223,14 @@ Node.js
 
 	$ n --latest # 利用可能な最新版を調べる
 	$ n latest   # 最新版をインストール
+	$ n stable   # 最新の安定版をインストール
 	$ n prune    # 使っていないバージョンを削除
+
+``node`` がインストールできれば、``npm`` で ``n`` をインストールして、
+以後そちらを使ってもいい。``n`` でバージョンを切り替えても、
+自分で入れた ``npm`` 以外のパッケージはそのまま残る::
+
+	$ npm install -g n
 
 * `全部知ってる？ npmを使いこなすために絶対知っておきたい10のこと <https://www.webprofessional.jp/10-npm-tips-and-tricks/>`_
 
