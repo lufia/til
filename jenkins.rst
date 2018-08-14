@@ -2,6 +2,45 @@
 Jenkins
 ========
 
+構築関係
+=========
+
+ワークスペースと成果物ディレクトリを移動
+-----------------------------------------
+
+Jenkinsシステム設定に「ワークスペースとビルドのルートディレクトリ」項目があり、
+変更できるような記事があるけれど、
+Dockerイメージ(jenkins/jenkins:lts)の2.121.2にはそのメニューが存在しなかった。
+
+これらの設定は *$JENKINS_HOME/config.xml* に
+
+.. code-block:: xml
+
+	<?xml version='1.1' encoding='UTF-8'?>
+	<hudson>
+	  <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
+	  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+	</hudson>
+
+として記述されているので、これを書き換えてもいいが、
+javaのコマンドラインオプションで指定することができる。
+
+.. code-block:: console
+
+	$ java -Djenkins.model.Jenkins.buildsDir='${ITEM_ROOTDIR}/builds' \
+		-Djenkins.model.Jenkins.workspaceDir='${JENKINS_HOME}/workspace/${ITEM_FULL_NAME}' -jar jenkins.war ...
+
+ここで使えるパラメータと環境変数は以下の資料にまとめられている。
+
+* `<https://wiki.jenkins.io/display/JENKINS/Features+controlled+by+system+properties>`_
+
+Dockerイメージの場合は、環境変数 *JAVA_OPTS* と *JENKINS_OPTS* に
+引数となるパラメータを設定しておくと、コンテナ実行時に以下の形で展開される。
+
+.. code-block:: bash
+
+	java -Duser.home=/var/jenkins_home $JAVA_OPTS -jar jenkins.war $JENKINS_OPTS
+
 Dockerを使ってビルド
 ====================
 
