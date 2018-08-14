@@ -411,9 +411,14 @@ Redux
 
 * `Reduxでコンポーネントを再利用する <https://qiita.com/kuy/items/869aeb7b403ea7a8fd8a>`_
 
-便利関数がなかった頃の話。裏の動きはわかりやすい。
+``connect`` がどう動くのかわからない時に読んだ。
+状態を更新するためにはストアの ``dispatch`` を使う必要がある。
+ストアは ``Provider`` で受け取るが、``connect`` を使わない場合は、
+子孫コンポーネントに引き回すためには自分で渡す必要があるが、
+面倒だしとてもわかりづらい。自分で渡す代わりに、ストアが必要なコンポーネントで
+``connect`` すれば ``dispatch`` を受け取ることができる。
 
-* `Reduxの実装とReactとの連携を超シンプルなサンプルを使って解説 <https://mae.chab.in/archives/2885>`_
+* `ReactのComponentとの連携について <http://webkatu.com/connection-of-react-redux/>`_
 
 マテリアルデザイン
 ==================
