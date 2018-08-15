@@ -128,6 +128,15 @@ webpack
 webpack自体は、JavaScriptファイルをバンドルするためのもので、
 普通は ``loader`` を使って他のトランスパイラを呼び出すことが多い。
 
+webpack-serve
+-------------
+
+*webpack-dev-server* の後継らしい。
+
+.. code-block::
+
+	$ npm install -D webpack-serve
+
 Babel
 -----
 
@@ -420,11 +429,86 @@ Redux
 
 * `ReactのComponentとの連携について <http://webkatu.com/connection-of-react-redux/>`_
 
+非同期の扱い
+-------------
+
+* componentでそのまま書く方法
+* actionに入れる方法(redux-thunk)
+* sagaというものに入れる方法(redux-saga)
+
+の3つがあるらしい。とりあえず簡単そうだった *redux-thunk* を使う。
+
+.. code-block:: console
+
+	$ npm install -D redux-thunk
+
+``createStore`` の引数にmiddlewareを渡すと使われる::
+
+	import { createStore, applyMiddleware } from 'redux'
+	import thunk from 'redux-thunk'
+
+	createStore(pixivApp, {initialObject...}, applyMiddleware(thunk))
+
+あとは、ActionCreatorの戻り値を関数にする::
+
+	export const addItem = id => dispatch => {
+		setTimeout(() => {
+			dispatch({
+				type: ADD_ITEM,
+				id
+			})
+		}, 1000)
+	}
+
+現在の状態を使いたい場合は第2引数を受け取る::
+
+	export const addItem = id => (dispatch, getState) => {
+		...
+	}
+
+* `reduxで非同期処理をするいくつかの方法 <https://qiita.com/m4iyama/items/63386fd65c7e9f06f5d4>`_
+
+middlewareについて
+
+* `Reduxのmiddlewareを積極的に使っていく <https://qiita.com/kuy/items/57c6007f3b8a9b267a8e>`_
+
+テスト
+-------
+
+Jestが主流らしい。
+
+* `Jest と ReactTestUtils で React Component のユニットテストを書く <https://qiita.com/kjugk/items/d0306eb2a1ff97a07d6f>`_
+
+その他
+-------
+
+*redux-aggregate* で手で書くコードを省略できるらしい。
+
+* `Reduxはもう辛くない。redux-aggregate <https://qiita.com/Takepepe/items/a79e767b38981c910c3f>`_
+
 マテリアルデザイン
 ==================
 
 * `material-components-web <https://github.com/material-components/material-components-web>`_
 * `material-components-web-react <https://github.com/material-components/material-components-web-react>`_
+
+*material-components-web* はSASSが必要だし、React用のリポジトリもあるのでそっちを使う。
+これはボタンやカードごとにnpmパッケージがあるので、必要なものを入れる。
+
+.. code-block:: console
+
+	$ npm install -D @material/react-button
+
+次に、エントリーポイントとなるJavaScriptファイルにCSSをロードさせる::
+
+	// SASSを使わない
+	import '@material/react-button/dist/button.css'
+
+これでwebpackによりCSSがバンドルされるので、あとは個別のページで使う::
+
+	import Button from '@material/react-button'
+
+	const render = () => (<Button onClick={xxx}>Label</Button>)
 
 Fetch API
 ==========
