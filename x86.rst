@@ -1,0 +1,17 @@
+=======
+x86
+=======
+
+Hypervisor
+===========
+
+* `ハイパーバイザの作り方 <https://syuu1228.github.io/howto_implement_hypervisor/>`_
+
+EPT(Extended Page Table)
+-------------------------
+
+ゲストOSメモリの物理アドレスを、
+ホストの物理アドレスへ変換するための仮想化支援機能。
+AMDの場合はRVI(Rapid Virtualization Indexing)と呼ぶらしい。
+
+* `EPTの設定をbhyveで調べる <https://kernhack.hatenablog.com/entry/2018/08/10/145808>`_
