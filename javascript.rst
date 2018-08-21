@@ -546,6 +546,34 @@ Node.js 10.5.0から、worker_threadsが入ったらしい。
 Syntax
 ========
 
+モジュール
+------------
+
+``export`` したオブジェクトを ``import`` で取り込める::
+
+	// Field.js
+	export const TYPE_NAME = '@@name'
+	export class TextField {
+	}
+	export default class Field {
+	}
+
+取り込む場合、``default`` のオブジェクトは任意の名前を付けられる::
+
+	// Form.js
+	import TextField, { Field, TYPE_NAME } from './Field.js'
+
+ディレクトリに *index.js* があれば、それを使ってまとめることができる::
+
+	// index.js
+	export * from './Field.js'
+	export * from './Form.js'
+
+ただし ``export .. from ..`` では、デフォルトのオブジェクトは対象外。
+
+* `import <https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import>`_
+* `export <https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/export>`_
+
 スプレッド構文とレスト構文
 ---------------------------
 
@@ -564,5 +592,9 @@ Syntax
 	const { ['items']: items, ...others } = receipt
 	const { ['chicken']: removedItem, ...newItems } = items
 	const newReceipt = { ...others, ['items']: newItems }
+
+オブジェクトのキーを ``[name]`` とすると、*name* 変数の値をキーに使う。
+また、書いた順番に割り当てられていくので同じキー名で上書きしたい場合は、
+先に ``...others`` を書いてから続けて上書きしたいキー名を書く。
 
 * `スプレッド構文 <https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax>`_
