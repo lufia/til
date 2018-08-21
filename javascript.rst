@@ -486,6 +486,10 @@ Jestが主流らしい。
 
 * `Reduxはもう辛くない。redux-aggregate <https://qiita.com/Takepepe/items/a79e767b38981c910c3f>`_
 
+*redux-form* はフォームを便利に扱うモジュール。
+
+* `Redux Form <https://redux-form.com/7.4.2/>`_
+
 マテリアルデザイン
 ==================
 
