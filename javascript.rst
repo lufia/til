@@ -486,6 +486,10 @@ Jestが主流らしい。
 
 * `Reduxはもう辛くない。redux-aggregate <https://qiita.com/Takepepe/items/a79e767b38981c910c3f>`_
 
+*redux-form* はフォームを便利に扱うモジュール。
+
+* `Redux Form <https://redux-form.com/7.4.2/>`_
+
 マテリアルデザイン
 ==================
 
@@ -555,13 +559,14 @@ Syntax
 	export const TYPE_NAME = '@@name'
 	export class TextField {
 	}
-	export default class Field {
+	export default class Form {
 	}
 
-取り込む場合、``default`` のオブジェクトは任意の名前を付けられる::
+取り込む場合、参照するオブジェクトの名前をブレースで囲む。
+``default`` のオブジェクトはブレースの外に置いて、任意の名前を付けられる::
 
 	// Form.js
-	import TextField, { Field, TYPE_NAME } from './Field.js'
+	import Form, { TextField, TYPE_NAME } from './Field.js'
 
 ディレクトリに *index.js* があれば、それを使ってまとめることができる::
 
@@ -593,7 +598,7 @@ Syntax
 	const { ['chicken']: removedItem, ...newItems } = items
 	const newReceipt = { ...others, ['items']: newItems }
 
-オブジェクトのキーを ``[name]`` とすると、*name* 変数の値をキーに使う。
+オブジェクトのキーを ``[expr]`` とすると、*expr* を評価してキー名に使う。
 また、書いた順番に割り当てられていくので同じキー名で上書きしたい場合は、
 先に ``...others`` を書いてから続けて上書きしたいキー名を書く。
 
