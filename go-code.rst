@@ -298,6 +298,15 @@ X-Forwarded-Port
 		},
 	}
 
+テスト
+========
+
+大きな値のdiffはgo-cmpを使うと良い。
+
+* `go-cmp <https://github.com/google/go-cmp>`_
+
+``go test -failfast`` を使うと失敗した時点でテストを終わる。
+
 クラウドサービス
 ================
 
