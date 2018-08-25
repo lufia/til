@@ -428,6 +428,7 @@ Redux
 ``connect`` すれば ``dispatch`` を受け取ることができる。
 
 * `ReactのComponentとの連携について <http://webkatu.com/connection-of-react-redux/>`_
+* `React/Reduxの難しかった点をできるだけシンプルに図解 <https://qiita.com/suzukenz/items/40afe717029c2f8f4a54>`_
 
 非同期の扱い
 -------------
@@ -481,6 +482,8 @@ Jestが主流らしい。
 
 その他
 -------
+
+*react-router* でルーティングするらしい。
 
 *redux-aggregate* で手で書くコードを省略できるらしい。
 
