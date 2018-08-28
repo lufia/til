@@ -215,6 +215,24 @@ flag
 		flag.Var(newStringSlice([]string{"default"}, &slice), "a", "sample")
 	}
 
+CGO
+====
+
+os/user
+--------
+
+*os/user* パッケージはデフォルトの場合libcベースの実装を使う。
+以下2つのうちどちらかを使うとピュアGoの実装が使用される。
+
+* osusergoビルドタグを指定する
+* ``CGO_ENABLED=0`` に設定する
+
+net
+-----
+
+DNSリゾルバはデフォルトでピュアGoの実装が使われる。
+``GODEBUG=netdns`` を使えばgoまたはcgoの切り替えができる。
+
 net
 =====
 
@@ -333,3 +351,12 @@ net/http/httptrace
 ------------------
 
 net/httpの動作を調べるときに便利。
+
+runtime/trace
+--------------
+
+Go 1.11よりUser annotationで識別情報を付けられるようになった。
+
+* trace.Log
+* trace.WithRegion
+* trace.NewTask

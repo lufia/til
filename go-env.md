@@ -95,6 +95,14 @@ GCのフェーズは
 
 `GODEBUG=scheddetail=1,schedtrace=X`に設定するとXミリ秒ごとに、スケジューラ、プロセッサ、スレッド、ゴルーチンの状態を出力する。
 
+#### tracebackancestors
+
+TODO
+
+#### x509ignoreCN
+
+このパラメータは[crypto/x509](https://golang.org/pkg/crypto/x509/)パッケージで提供される。
+
 #### netdns
 
 このパラメータは[net](https://golang.org/pkg/net/)パッケージで提供される。
@@ -235,7 +243,6 @@ cgoを有効にする場合は`CGO_ENABLED=1`とする。
 CGO_LDFLAGS
 CGO_xxxxx_ALLOW
 CGO_xxxxx_DISALLOW
-
 
 ### Goのコンパイル時に使う
 

@@ -16,3 +16,11 @@ Linux情報
 
 * `phoronix <https://www.phoronix.com/>`_
 * `lwn.net <https://lwn.net/>`_
+
+脆弱性
+=======
+
+読んでいると勉強になるらしい。
+
+* `Security Update Guide <https://portal.msrc.microsoft.com/en-us/security-guidance>`_
+	* `セキュリティ更新プログラム ガイド <https://portal.msrc.microsoft.com/ja-jp/security-guidance>`_
