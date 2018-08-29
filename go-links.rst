@@ -163,6 +163,7 @@ golang.org/x
 * `Building and using coverage-instrumented programs with Go <http://damien.lespiau.name/2017/05/building-and-using-coverage.html>`_
 * `Go Fridayこぼれ話:非公開(unexported)な機能を使ったテスト <https://tech.mercari.com/entry/2018/08/08/080000>`_
 * `Goのtestを理解する in 2018 <https://budougumi0617.github.io/2018/08/19/go-testing2018/>`_
+* `Goでテストを書く(テストの実装パターン集) <https://qiita.com/atotto/items/f6b8c773264a3183a53c>`_
 
 オプション
 ----------
