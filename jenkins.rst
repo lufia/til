@@ -418,3 +418,36 @@ Docker pluginの設定::
 	  Jenkins.instance.clouds.add(cloud)
 	}
 	Jenkins.instance.save()
+
+AWS S3にアップロード
+====================
+
+``aws s3`` コマンドはプロファイルを使う方法など複数の認証方法に対応しているが、
+JenkinsからS3にアップロードする場合は環境変数を使う方法が一番簡単。
+
+* aws-credentials プラグインをインストールしておく
+* Jenkinsの管理画面から資格情報を登録する(例: aws_user)
+
+これでJenkinsfileから参照できるようになる::
+
+	withCredentials([[
+		$class: 'AmazonWebServicesCredentialsBinding',
+		credentialsId: 'aws_user',
+		accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+		secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+	]]){
+		...
+	}
+
+トラブル対応
+=============
+
+ログインできなくなった場合
+--------------------------
+
+*$JENKINS_HOME/config.xml* の ``useSecurity`` を ``false`` に変更すればよい。
+
+.. code-block:: bash
+
+	# Linux(GNU sed)の場合
+	sed -i '/useSecurity/s/true/false/' config.xml
