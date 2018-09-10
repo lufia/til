@@ -164,6 +164,7 @@ golang.org/x
 * `Go Fridayこぼれ話:非公開(unexported)な機能を使ったテスト <https://tech.mercari.com/entry/2018/08/08/080000>`_
 * `Goのtestを理解する in 2018 <https://budougumi0617.github.io/2018/08/19/go-testing2018/>`_
 * `Goでテストを書く(テストの実装パターン集) <https://qiita.com/atotto/items/f6b8c773264a3183a53c>`_
+* `Go言語向けFailure Injectionツール:gofail <https://blog.cybozu.io/entry/2018/09/04/080000>`_
 
 オプション
 ----------
@@ -208,3 +209,9 @@ GAE/Go
 * `The Go Blog <https://blog.glang.org/>`_
 * `GopherAcademy <https://blog.gopheracademy.com/>`_
 * `goz Go's News <http://goz.hexacosa.net/>`_
+
+それ以外
+========
+
+* `HOW to CONTRIBUTE to go <https://docs.google.com/presentation/d/14TfQtrsnz1yvOrX3uRa7ebkbOI3aByUB6dvvFIMXQ-8/>`_
+	* `コントリビュート練習用のリポジトリ <https://github.com/golang/scratch>`_

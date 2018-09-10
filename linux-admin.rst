@@ -47,6 +47,11 @@ USBイーサネットなどの抜き差しするデバイスのために、
 
 * `ネットワークインターフェースの名前 <http://blog.keshi.org/hogememo/2014/12/28/debian-vs-ubuntu-network-interface-names>`_
 
+systemd
+--------
+
+* `systemd.index <https://www.freedesktop.org/software/systemd/man/index.html>`_
+
 Yum関連
 =======
 
