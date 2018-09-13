@@ -7,6 +7,11 @@ Prometheus関連
 構成
 ======
 
+関連資料
+--------
+
+* `Prometheus入門から運用まで徹底解説 <https://sqlazure.jp/r/prometheus/1500/>`_
+
 Prometheus 2.0へのアップグレード
 --------------------------------
 
