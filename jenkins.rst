@@ -419,6 +419,8 @@ Docker pluginの設定::
 	}
 	Jenkins.instance.save()
 
+* `Cannot set custom PATH inside docker container <https://issues.jenkins-ci.org/browse/JENKINS-49076>`_
+
 AWS S3にアップロード
 ====================
 
