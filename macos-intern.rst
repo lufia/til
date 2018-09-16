@@ -4,6 +4,30 @@ macOS調べ物
 
 .. highlight: console
 
+雑多メモ
+=========
+
+TCC
+------
+
+権限関連のデータベースらしい
+
+* tccutil
+
+ファイルの実態はSQLiteのデータベース
+
+* */Library/Application Support/com.apple.TCC/TCC.db*
+
+ディレクトリ
+------------
+
+* dscl
+
+ファイル属性
+------------
+
+* xattr
+
 脆弱性(VCE-ID)
 ==============
 
