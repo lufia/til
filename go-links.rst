@@ -165,6 +165,7 @@ golang.org/x
 * `Goのtestを理解する in 2018 <https://budougumi0617.github.io/2018/08/19/go-testing2018/>`_
 * `Goでテストを書く(テストの実装パターン集) <https://qiita.com/atotto/items/f6b8c773264a3183a53c>`_
 * `Go言語向けFailure Injectionツール:gofail <https://blog.cybozu.io/entry/2018/09/04/080000>`_
+* `Goのtestを理解する in 2018 <http://budougumi0617.github.io/2018/08/19/go-testing2018/>`_
 
 オプション
 ----------
