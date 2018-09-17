@@ -2,8 +2,24 @@
 GAE/Goのデータストア
 =====================
 
+.. highlight:: go
+
 雑多
 =====
+
+Filterするキーは **プロパティ名**
+----------------------------------
+
+以下のような構造体をデータストアに書き込む場合::
+
+	type Data struct {
+		A string `datastore:"a_field"`
+		B string
+	}
+
+``Filter`` や ``Order`` で参照する名前はこのようになる::
+
+	datastore.Query("Data").Filter("a_field").Order("B")
 
 トランザクション中でPutMultiするにはオプションが必要
 ----------------------------------------------------
