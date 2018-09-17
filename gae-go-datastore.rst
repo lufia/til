@@ -30,3 +30,18 @@ PutMultiで書き込むグループ数が多いとエラーになる
 とあるので、親キーを付けるように設計するか、小分けにするしかなさそう。
 
 * `トランザクション <https://cloud.google.com/datastore/docs/concepts/transactions>`_
+
+memcache
+=========
+
+.. code-block:: go
+
+JSONとGobは標準で用意されている::
+
+	var a []string
+	_, err := memcache.JSON.Get(c, "key", &a)
+
+	err := memcache.JSON.Set(c, &memcache.Item{
+		Key: "key",
+		Object: a,
+	})
