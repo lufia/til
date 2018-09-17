@@ -5,6 +5,14 @@ Google App Engine/Goのプロジェクト
 
 GAE/Goのコーディング以外に関する情報。
 
+パッケージ
+-----------
+
+* google.golang.org/appengine
+* cloud.google.com/go
+
+などあるが、前者はApp Engine standardで使うもの。後者はそれ以外。
+
 1つのプロジェクトで複数のApp Engineを使う
 -----------------------------------------
 
