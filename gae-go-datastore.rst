@@ -47,6 +47,38 @@ PutMultiで書き込むグループ数が多いとエラーになる
 
 * `トランザクション <https://cloud.google.com/datastore/docs/concepts/transactions>`_
 
+クエリカーソルはLimitまで
+-------------------------
+
+例えば以下のようなクエリ::
+
+	q := datastore.NewQuery("User").Limit(10)
+
+このクエリから10件取得終わると、``Iterator.Next`` は ``datastore.Done`` を返す。
+全てのデータでページングしたい場合は ``Limit`` を設定しない方が良い。
+
+新しいフィールドはクエリできない
+---------------------------------
+
+構造体にフィールドを追加した場合::
+
+	type User struct {
+		ID   int
+		Name string
+		Paid bool // 追加
+	}
+
+データストアに以前から存在していたエンティティは、
+追加したフィールドをインデックスしていないので、
+クエリの ``Filter`` で検索することができない。
+
+Goのコードではゼロ値が入っているので、
+
+1. Go側でフィルタする
+2. 過去のデータを新しいモデルで上書きして使う
+
+* `GAE Datastore (Golang): Filter Query When Adding New DB Field <https://stackoverflow.com/questions/39104283/gae-datastore-golang-filter-query-when-adding-new-db-field>`_
+
 memcache
 =========
 
