@@ -63,6 +63,8 @@ JWA (RFC 7518)
 
 ログイン処理でよく使われるものは、おそらくJWSだと思う。
 
+* `どうして JWT をセッションに使っちゃうわけ？ <https://co3k.org/blog/why-do-you-use-jwt-for-session>`_
+
 JWT関連Goパッケージ
 -------------------
 
