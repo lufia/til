@@ -54,3 +54,23 @@ USS
 	プロセスが使用する固有のメモリサイズ
 
 * `VSS RSS PSS USS の説明 <http://gntm-mdk.hatenadiary.com/entry/2015/01/21/231258>`_
+
+スケジューラ
+============
+
+プロセスの状態
+---------------
+
+TASK_RUNNING
+	実行中または実行待ち
+
+TASK_INTERRUPTIBLE
+	割り込み、シグナルなどでウェイトキューにある
+
+TASK_UNINTERRUPTIBLE
+	TASK_INTERRUPTIBLEと同じだがシグナルで起きない
+
+TASK_STOPPED
+	停止状態、ランキューまたはウェイトキューのどちらにもない
+
+* `Linuxのしくみを学ぶ - プロセス管理とスケジューリング <https://syuu1228.github.io/process_management_and_process_schedule/process_management_and_process_schedule.html>`_

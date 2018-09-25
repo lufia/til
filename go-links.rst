@@ -85,6 +85,13 @@ context
 
 * `なぜContextを構造体に含めてはいけないのか、またそれが許される状況について <https://qiita.com/sonatard/items/d97279086b24e588a82d>`_
 
+go
+-----
+
+* `GoのためのGo <https://motemen.github.io/go-for-go-book/>`_
+
+*go/ast* や *go/parser* などについての本。
+
 golang.org/x
 -------------
 

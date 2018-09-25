@@ -15,3 +15,8 @@ EPT(Extended Page Table)
 AMDの場合はRVI(Rapid Virtualization Indexing)と呼ぶらしい。
 
 * `EPTの設定をbhyveで調べる <https://kernhack.hatenablog.com/entry/2018/08/10/145808>`_
+
+AVX-512
+=========
+
+* `AVX-512(フォーマット)解説 <https://www.slideshare.net/herumi/avx512>`_
