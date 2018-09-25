@@ -65,13 +65,13 @@ systemdを使う場合は、*/etc/systemd/network/10-static.network* あたり�
 
 	[Route]
 	Gateway=10.1.2.254
-	Destination=172.17.2.0/24
+	Destination=172.17.0.0/16
 
 同等のコマンドライン。
 
 .. code-block:: bash
 
-	ip route add 172.17.2.0/24 via 10.1.2.254 dev eth0
+	ip route add 172.17.0.0/16 via 10.1.2.254 dev eth0
 
 * `Docker network周りでハマった話 <http://junchang1031.hatenablog.com/entry/2016/06/15/020545>`_
 * `Change Docker network bridge IP range <https://mogutan.wordpress.com/2016/12/28/change-docker-network-bridge-ip-range/>`_
