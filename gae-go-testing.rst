@@ -1,3 +1,28 @@
+=====================
+Google App Engine/Go
+=====================
+
+OAuth
+=========
+
+GAE/GoはHTTPアクセスを行う場合、``urlfetch.Client`` を使う必要があるが、
+OAuth2でトークン取得する際には一般的に ``oauth2.Config.Client`` で
+HTTPクライアントを生成することが多いのではないか。
+
+.. code-block:: go
+
+*oauth2* パッケージのExampleに、``oauth2.Transport`` を使う例があった::
+
+	ctx := appengine.NewContext(req)
+	client := &http.Client{
+		Transport: &oauth2.Transport{
+			Source: google.AppEngineTokenSource(ctx, "https://www.googleapis.com/auth/bigquery"),
+			Base: &urlfetch.Transport{
+				Context: ctx,
+			},
+		},
+	}
+
 Google App Engine/Goのテスト
 ============================
 
