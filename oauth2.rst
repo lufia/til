@@ -63,7 +63,8 @@ JWA (RFC 7518)
 
 ログイン処理でよく使われるものは、おそらくJWSだと思う。
 
-* `どうして JWT をセッションに使っちゃうわけ？ <https://co3k.org/blog/why-do-you-use-jwt-for-session>`_
+* `どうしてリスクアセスメントせずにJWTをセッションに使っちゃうわけ？ <https://co3k.org/blog/why-do-you-use-jwt-for-session>`_
+* `JWT形式を採用したChatWorkのアクセストークンについて <https://creators-note.chatwork.com/entry/2018/09/25/132218>`_
 
 JWT関連Goパッケージ
 -------------------

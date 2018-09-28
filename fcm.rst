@@ -165,7 +165,7 @@ FCMサーバからCanonical registration IDが返却されることはなくな�
 
 * `Firebase Cloud Messaging - Are GCM canonical IDs still necessary? <https://stackoverflow.com/questions/41687344/firebase-cloud-messaging-are-gcm-canonical-ids-still-necessary/>`_
 * `Retrieve FCM canonical_id in v1 API <https://stackoverflow.com/questions/48542261/retrieve-fcm-canonical-id-in-v1-api>`_
-* `Instance ID <https://developers.google.com/instance-id/>`
+* `Instance ID <https://developers.google.com/instance-id/>`_
 
 Message
 -----------
