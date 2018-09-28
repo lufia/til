@@ -211,6 +211,14 @@ GAE/Go
 	* cloud.google.com/go/traceで送れるらしい
 * `GAE/Goのurlfetchのタイムアウトを設定する <http://pospome.hatenablog.com/entry/2017/12/17/112144>`_
 
+CI
+=====
+
+Travis CI
+---------
+
+* `Using Go modules with vendor support on Travis CI <https://arslan.io/2018/08/26/using-go-modules-with-vendor-support-on-travis-ci/>`_
+
 情報収集
 ========
 
