@@ -20,7 +20,7 @@ FCM HTTP v1 API
 -------
 
 エラーが発生した場合のステータスコードやレスポンスがよくわからないので調べた。
-``error.details[]`` の中に ``@type`` が *type.googleapis.com/google.firebase.fcm.v1.FcmError* のオブジェクトがあれば、その ``error.details[].errorCode``がエラーコードで、見つからない場合は ``error.status`` がエラーコード。
+``error.details[]`` の中に ``@type`` が *type.googleapis.com/google.firebase.fcm.v1.FcmError* のオブジェクトがあれば、その ``error.details[].errorCode`` がエラーコードで、見つからない場合は ``error.status`` がエラーコード。
 
 実際に試してみた結果を貼る。
 
