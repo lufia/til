@@ -34,6 +34,13 @@ Linux管理
 ``ps`` コマンドの *STAT* が ``Ss`` の場合はセッションリーダーで、
 ``S+`` の場合はフォアグラウンド(端末にアタッチされている)という意味らしい。
 
+SystemTap
+---------
+
+SolarisのDTraceみたいなもの。
+
+* `SystemTapメモ <http://myokota.hatenablog.jp/entry/2015/01/03/235944>`_
+
 管理
 ======
 
