@@ -38,6 +38,27 @@ Go 1.11 beta2では *$GOPATH/src/mod* だったが、途中で変更された。
 * `$GOPATH/src/mod <https://groups.google.com/d/topic/golang-dev/RjSj4bGSmsw/discussion>`_
 * `cmd/go: drop $GOPATH/pkg <https://github.com/golang/go/issues/4719>`_
 
+ローカルのモジュールを参照する
+------------------------------
+
+Goモジュールはパブリックなバージョンを参照するが、開発中の場合など、
+ローカルにしかない場合がある。このような場合、``replace`` ディレクティブで
+モジュールの参照先を変更することができる。
+
+*go.mod* で以下のように書く::
+
+	module github.com/lufia/xxx
+
+	require (
+		github.com/lufia/backoff v1.1.0
+		github.com/lufia/httpclientutil v0.0.0-20180717092500-9eb1f338c35d
+	)
+
+	replace (
+		github.com/lufia/backoff v1.1.0 => ../backoff
+	)
+
+
 並行処理パターン
 ----------------
 
