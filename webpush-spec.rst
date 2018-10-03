@@ -43,6 +43,7 @@ VAPID-秘密鍵
 VAPID-公開鍵
   1. トークンURL生成のためにユーザエージェントへ渡す
   2. VAPID検証のためにプッシュサービスへ ``Crypto-Key: p256ecdsa=`` ヘッダで渡す
+  3. uncompressed pointフォーマット(Goでは ``elliptic.Marshal``)
 
 メッセージの暗号化を行う場合、
 アプリケーションサーバは追加で別の鍵ペアを生成する。
