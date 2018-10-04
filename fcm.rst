@@ -174,3 +174,32 @@ Message
 実際に届くものは、両方をマージした結果。
 
 * `What's new with FCM? Customizing messages across platforms! <https://firebase.googleblog.com/2017/11/whats-new-with-fcm-customizing-messages.html>`_
+
+テスト
+========
+
+OAuth2対策
+-----------
+
+*service-account.json* にOAuth2のエンドポイントや秘密鍵が入っているので、
+これを変更して使えば良い。適当に生成したJSONはこのようになる。
+
+.. code-block:: json
+
+	{
+		"type": "service_account",
+		"project_id": "xx-dev",
+		"private_key_id": "12345",
+		"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQ...VGCKQCSQPSw=\n-----END PRIVATE KEY-----\n",
+		"client_email": "user@example.com",
+		"client_id": "abcde",
+		"auth_uri": "http://localhost:8080/auth",
+		"token_uri": "http://localhost:8080/token"
+	}
+
+このJSONを使って、適切なレスポンスを返すエンドポイントを実装すれば良い。
+秘密鍵は以下のコマンドで生成すると使える。
+
+.. code-block:: console
+
+	$ openssl genrsa 2048 | openssl pkcs8 -topk8 -nocrypt
