@@ -5,6 +5,7 @@ GCP全般
 リンク
 ------
 
+* `GCPとOAuth2 <https://medium.com/google-cloud-jp/91476f2b3d7f>`_
 * `GCPお役立ちLink集 <https://github.com/gcpug/nouhau/tree/master/general/poem/link>`_
 
 気になっているサービス

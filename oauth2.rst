@@ -139,9 +139,18 @@ Client Credentials Grant
 
 	2-legged OAuth 2.0
 
+JSON Web Token Bearer Token
+	クライアントIDと証明書(JWT)でアクセストークンを取得する
+
+	リフレッシュトークンは発行しない
+
 * `RFCとなった「OAuth 2.0」 <http://www.atmarkit.co.jp/ait/articles/1209/10/news105.html>`_
 * `色々な OAuth のフローと doorkeeper gem での実装 <https://qiita.com/tyamagu2/items/5aafff7f6ae0a9ec94aa>`_
 * `Why the Resource Owner Password Credentials Grant Type is not Authentication nor Suitable for Modern Applications <https://www.scottbrady91.com/OAuth/Why-the-Resource-Owner-Password-Credentials-Grant-Type-is-not-Authentication-nor-Suitable-for-Modern-Applications>`_
+
+* `GCPとOAuth2 <https://medium.com/google-cloud-jp/91476f2b3d7f>`_
+* `OAuth2 JWT Bearer Token フローを使ってSalesforceへアクセスする <https://qiita.com/stomita/items/4542ce1b48e5fa849ef1>`_
+* `RFC 7523 <https://tools.ietf.org/html/rfc7523>`_
 
 クライアントタイプ
 ------------------
