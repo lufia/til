@@ -277,3 +277,8 @@ GOTESTONLY
 	plan9
 	https://go.googlesource.com/build/+/20d848347d0f5efd48953b70cf0fc67eb1b0ada7/cmd/buildlet/buildlet.go
 GO_CGOCHECKBYTES_TRY
+
+### xxx
+
+osusergoビルドタグ(os/user)
+netgoビルドタグ(net)

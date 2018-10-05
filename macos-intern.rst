@@ -7,9 +7,28 @@ macOS調べ物
 Time Machine
 ============
 
+コマンドライン
+--------------
+
 ``tmutil`` でコマンドラインから操作できる。
 
 * `Control Time Machine from the command line <https://www.macworld.com/article/2033804/control-time-machine-from-the-command-line.html>`_
+
+古いバックアップを削除する::
+
+	$ tmutil listbackups | grep 2017- | tr "\n" "\0" | sudo xargs -0 tmutil delete
+
+途中で止まった場合
+------------------
+
+``mdutil`` でインデックスを削除すると動く場合がある::
+
+	$ sudo mdutil -i off -a
+	$ sudo mdutil -E -a
+	$ sudo rm -rf /Volumes/xxx/.Spotlight-V100
+	$ sudo mdutil -i on -a
+
+* `Time Machineの不具合 <http://goroneko.la.coocan.jp/wordpress/?p=770>`_
 
 雑多メモ
 =========
