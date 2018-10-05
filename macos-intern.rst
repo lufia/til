@@ -4,6 +4,13 @@ macOS調べ物
 
 .. highlight: console
 
+Time Machine
+============
+
+``tmutil`` でコマンドラインから操作できる。
+
+* `Control Time Machine from the command line <https://www.macworld.com/article/2033804/control-time-machine-from-the-command-line.html>`_
+
 雑多メモ
 =========
 
