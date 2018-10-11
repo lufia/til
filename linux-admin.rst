@@ -87,3 +87,22 @@ Yum関連
 ``strace`` でシステムコールの動作をトレースする。
 
 * `straceとltraceでトレース <http://szarny.hatenablog.com/entry/2017/08/27/153048>`_
+
+apt関連
+=======
+
+Python
+-------
+
+Ubuntuでは、Python2と3が同時に入っているが、``pip`` は入っていない。
+必要なら以下のコマンドでインストールする::
+
+	$ apt update
+	$ apt install python-pip python3-pip
+	$ pip -V
+	$ pip3 -V
+
+キャッシュ
+----------
+
+``apt`` のキャッシュは */var/lib/apt/lists* 以下にある。
