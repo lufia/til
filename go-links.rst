@@ -59,6 +59,8 @@ Gopher::
 * `GoConで発表してきたのでついでにruntime以下の知識をまとめていく <http://niconegoto.hatenadiary.jp/entry/2017/04/11/092810>`_
 * `Goのスケジューラー実装とハマりポイント <https://talks.godoc.org/github.com/niconegoto/talks/concurrency.slide>`_
 * `Golangのスケジューラあたりの話 <https://qiita.com/takc923/items/de68671ea889d8df6904>`_
+* `Five things that make Go fast <https://dave.cheney.net/2014/06/07/five-things-that-make-go-fast>`_
+	* 関数のインライン化やスタックのコピーなど
 
 GC
 -----
@@ -88,15 +90,25 @@ context
 go
 -----
 
+* `go/types: The Go Type Checker <https://github.com/golang/example/blob/master/gotypes/README.md>`_
 * `GoのためのGo <https://motemen.github.io/go-for-go-book/>`_
 
-*go/ast* や *go/parser* などについての本。
-
 golang.org/x
--------------
+=============
 
-* `Goにおける言語とロケールのマッチング <https://www.ymotongpoo.com/works/goblog-ja/post/matchlang/>`_
-* `Goでの文字列の正規化 <https://www.ymotongpoo.com/works/goblog-ja/post/normalization/>`_
+Goの準標準パッケージ。本体のリリースサイクルとは異なる。
+
+golang.org/x/text
+------------------
+
+* x/text/language
+	* `Goにおける言語とロケールのマッチング <https://www.ymotongpoo.com/works/goblog-ja/post/matchlang/>`_
+* x/text/unicode/norm
+	* `Goでの文字列の正規化 <https://www.ymotongpoo.com/works/goblog-ja/post/normalization/>`_
+* x/text/transform
+	* `golang.org/x/text/transformパッケージを使う <https://tech.mercari.com/entry/2017/12/05/154907>`_
+* x/text/encoding/japanese
+	* 文字コード変換など
 
 コードの書き方
 ==============
@@ -106,6 +118,8 @@ golang.org/x
 
 * `パッケージ名(Package names) <https://www.ymotongpoo.com/works/goblog-ja/post/package-names/>`_
 
+* `Go Code Review Comments <https://github.com/golang/go/wiki/CodeReviewComments>`_
+	* `日本語訳 <https://qiita.com/knsh14/items/8b73b31822c109d4c497>`_
 * `Go Proverbsを勉強がてら和訳して少し解説した <http://nametake-1009.hatenablog.com/entry/2016/12/11/203328>`_
 * `understanding nil <https://speakerdeck.com/campoy/understanding-nil>`_
 * `understanding the interface <https://speakerdeck.com/campoy/understanding-the-interface>`_
@@ -115,22 +129,6 @@ golang.org/x
 * `標準的なパッケージのレイアウト <http://allishackedoff.hatenablog.com/entry/2016/08/23/015016>`_
 * `Building and using coverage-instrumented programs with Go <http://damien.lespiau.name/2017/05/building-and-using-coverage.html>`_
 * `Don't just check errors, handle them gracefully <https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully>`_
-
-コマンドの終了コードは、
-
-0
-	正常終了
-
-1
-	実行エラー
-
-2
-	間違った使い方や-helpなど、コマンド未実行でのエラー
-
-128以上
-	シグナルでの終了とか
-
-* `Exit Codes With Special Meanings <http://tldp.org/LDP/abs/html/exitcodes.html>`_
 
 パターン
 --------

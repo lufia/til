@@ -27,6 +27,30 @@ HTTPヘッダのようなものを扱う場合はMetadataを使う。
 例えばメソッドのエラーでは大した情報を載せられないので、
 詳細なエラー情報をクライアントに返したい、など。
 
+Channelz
+========
+
+接続状態の診断ができたりする。
+gRPCの接続状態は以下のどれかに該当する。
+
+CONNECTING
+	TCP接続確率やTLSハンドシェイクなどを行なっている状態
+
+READY
+	gRPCとして確立した状態
+
+TRANSIENT_FAILURE
+	エラーやタイムアウトなどでリトライする状態
+
+IDLE
+	何も接続していない状態
+
+SHUTDOWN
+	シャットダウンを行なっている状態
+
+* `gRPCのChannelzを使ってみた <https://qiita.com/kazegusuri/items/0945f9d805edfb6958ad>`_
+* `gRPC Connectivity Semantics and API <https://github.com/grpc/grpc/blob/master/doc/connectivity-semantics-and-api.md>`_
+
 リンク
 ======
 

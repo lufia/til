@@ -484,6 +484,8 @@ Jestが主流らしい。
 -------
 
 *react-router* でルーティングするらしい。
+Reduxを使う場合はあまりうまく動かないようで、
+その場合は *react-router-redux* を使う。
 
 *redux-aggregate* で手で書くコードを省略できるらしい。
 
