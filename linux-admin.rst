@@ -44,6 +44,11 @@ SolarisのDTraceみたいなもの。
 管理
 ======
 
+ファイル階層
+------------
+
+* `Linuxのディレクトリ構成(FHS) <http://www.7key.jp/computer/linux/directory.html>`_
+
 ネットワークデバイス
 --------------------
 
@@ -54,10 +59,20 @@ USBイーサネットなどの抜き差しするデバイスのために、
 
 * `ネットワークインターフェースの名前 <http://blog.keshi.org/hogememo/2014/12/28/debian-vs-ubuntu-network-interface-names>`_
 
+ifconfig/netstat vs ip/ss
+-------------------------
+
+* `There's real reasons for Linux to replace ifconfig, netstat, et al <https://utcc.utoronto.ca/~cks/space/blog/linux/ReplacingNetstatNotBad>`_
+
 systemd
 --------
 
 * `systemd.index <https://www.freedesktop.org/software/systemd/man/index.html>`_
+
+BPF
+----
+
+* `Why is the kernel community replacing iptables with BPF <https://cilium.io/blog/2018/04/17/why-is-the-kernel-community-replacing-iptables/>`_
 
 Yum関連
 =======

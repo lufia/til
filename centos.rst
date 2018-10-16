@@ -26,3 +26,19 @@ SCLは、RHELSC語幹の *centos-release-scl-rh* と、CentOS SCLo SIGの *cento
 	$ dhclient eth0
 
 以後、ネットワークが通常通り使えるようになる。
+
+RPMビルド
+-----------
+
+``%setup`` マクロを使わない場合、``Source`` タグも不要になる。
+単純にファイルを展開したい場合などに使える。
+または ``NoSource`` タグを使ってもいい。
+
+*%{_topdir}/SOURCES* はspecファイルの中で
+*$RPM_SOURCE_DIR* または *%{_sourcedir}* として参照できる。
+
+* `RPMパッケージ作成メモ <http://www.02.246.ne.jp/~torutk/linux/centos5/rpmpackagebuild.html>`_
+* `%setupマクロの詳細 <https://vinelinux.org/docs/vine6/making-rpm/setup-macro.html>`_
+
+``%setup`` デフォルトではソースコード展開のルールが決まっているけれど、
+展開後のディレクトリ名などは、オプションでいくつかは変更可能。

@@ -53,6 +53,7 @@ TCC
 ------------
 
 * xattr
+* `パーミッションの末尾+文字とは <https://tkamada.blogspot.com/2012/06/macos-xls-l.html>`_
 
 脆弱性(VCE-ID)
 ==============

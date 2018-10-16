@@ -12,6 +12,7 @@
 * `hubble <https://hubble-docs.com>`_
 * `Spectrum <https://spectrum.chat>`_
 	* `最近試してみたサービスを紹介・解説します <https://note.mu/celorie/n/n5a4df06108f1>`_
+* `Dependabot <https://dependabot.com/>`_
 
 Linux情報
 ==========
