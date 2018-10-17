@@ -4,6 +4,22 @@ Google App Engine/Goのプロジェクト
 
 .. highlight:: yaml
 
+go1.11
+=======
+
+Go 1.11あたりで ``appengine`` パッケージを使わず、
+Go標準パッケージだけでコードが動作するようになった。
+代わりに、``appengine/memcache`` などApp Engineコンテキストを使うような
+パッケージが使えない(明示的に ``appengine.Main`` を呼べば使えるが非推奨)ので、
+どのように移行すればいいかの覚書。
+
+* `Announcing App Engine's New Go 1.11 Runtime <https://blog.golang.org/appengine-go111>`_
+* `Migrating your App Engine app from Go 1.9 to Go 1.11 <https://cloud.google.com/appengine/docs/standard/go111/go-differences>`_
+* `早速GAE/Go go1.11の次世代ランタイム試してみた <https://qiita.com/chidakiyo/items/07b7ec09c06efdfe2edb>`_
+
+**app.yaml** の ``login`` タグが使えなくなったことも厳しいが、
+``appengine/search`` に代わりElasticSearch自前運用という点が極めてつらい。
+
 プロジェクト設定
 =================
 
