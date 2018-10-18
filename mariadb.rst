@@ -11,6 +11,8 @@ MySQL・MariaDB・PostgreSQLの違い
 クオート         ```key```            ```key```            ``"key"``
 ================ ==================== ==================== =================
 
+* `Things to find out about when moving from MySQL to PostgreSQL <https://wiki.postgresql.org/wiki/Things_to_find_out_about_when_moving_from_MySQL_to_PostgreSQL>`_
+
 Go関連
 ======
 
