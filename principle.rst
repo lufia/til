@@ -46,3 +46,8 @@ CAP定理
 これらのうち、どれか2つまでしか満たすことはできない。
 
 * `CAP定理を見直す <https://www.publickey1.jp/blog/13/capcap32.html>`_
+
+ガイドライン
+============
+
+* `The twelve-factor app <https://12factor.net/ja/>`_
