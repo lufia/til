@@ -495,6 +495,16 @@ Reduxを使う場合はあまりうまく動かないようで、
 
 * `Redux Form <https://redux-form.com/7.4.2/>`_
 
+不要論
+--------
+
+Redux 無くても良い話。Suspense, Context, Hooksあたりが代わりとなりそう。
+
+* `あなたはReduxを必要としないかもしれない <https://mae.chab.in/archives/2937>`_
+* `Redux再考 <https://mizchi.hatenablog.com/entry/2018/10/04/101308>`_
+* `Reactの次期機能のSuspenseが凄くって、非同期処理がどんどん簡単になってた！ <https://qiita.com/fumihiko-hidaka/items/c3aaedd073f7bf5a685f>`_
+* `Introducing Hooks <https://reactjs.org/docs/hooks-intro.html>`_
+
 マテリアルデザイン
 ==================
 
