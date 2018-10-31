@@ -5,6 +5,7 @@
 未分類
 ===========
 
+* `OpenCensus <https://opencensus.io/>`_
 * `beerpay <https://beerpay.io/>`_
 * `Glisser <https://www.glisser.com/>`_
 	* `日本人が知らないプレゼンの最強兵器「Glisser」とは？ <https://seleck.cc/797>`_
