@@ -38,3 +38,13 @@ Redisに保存されている値を直接削除すれば良い。
 	127.0.0.1:6379> del "cache:gitlab:rack::attack:allow2ban:ban:42.125.229.42"
 
 * `Remove banned IP from GitLab <https://medium.com/@Nomadic.UA/13067bf91707>`_
+
+運用・管理
+===========
+
+シークレットの管理
+-------------------
+
+sameersbn/docker-gitlab の場合は、**gitlab-secrets** という名前の
+シークレットがあれば起動時に ``source /run/secrets/gitlab-secrets`` で読み込む。
+なので ``docker secret create gitlab-secrets xxx`` で環境変数を追加すれば良い。

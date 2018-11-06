@@ -18,6 +18,78 @@ Docker関連メモ
 
 	# rm -rf ~/.cache/pip
 
+Compose
+=========
+
+構文確認
+----------
+
+configサブコマンドで確認できる::
+
+	$ docker-compose [-f docker-compose.yml] config
+
+v3系への移行
+--------------
+
+**docker-compose.yml** をv3系に移行すると、``volumes_from`` が使えなくなる。
+代わりに、``volumes`` 属性を使う必要がある。
+
+新規で作る場合は、
+
+.. code-block:: yaml
+
+	services:
+	  mysql:
+	    image: mysql:latest
+	    volumes:
+	      - data:/var/lib/mysql
+	volumes:
+	  data:
+
+とすれば良いが、既存のデータがある場合は、
+ボリュームコンテナを ``volumes`` へ移行しなければならない。
+
+例えばv1でこのような記述をした場合、
+
+.. code-block:: yaml
+
+	data:
+	  build: ./data	# VOLUME ["/var/lib/mysql", "/var/lib/redis"]
+	mysql:
+	  image: mysql:latest
+	  volumes_from:
+	    - data
+	redis:
+	  image: redis:latest
+	  volumes_from:
+	    - data
+
+v3に移行すると以下のようになる。
+
+.. code-block:: yaml
+
+	version: '3.1'
+	services:
+	  mysql:
+	    image: mysql:latest
+	    volumes:
+	      - db:/var/lib/mysql
+	  redis:
+	    image: redis:latest
+	    volumes:
+	      - cache:/var/lib/redis
+	volumes:
+	  db:
+	    external:
+	      name: (dataコンテナの/var/lib/mysqlボリュームID)
+	  cache:
+	    external:
+	      name: (dataコンテナの/var/lib/redisボリュームID)
+
+ボリュームIDは、``docker volume ls`` を実行すると
+``VOLUME`` 単位で列挙されるので、``docker volume inspect`` や
+**/var/lib/docker/volumes/** 以下の内容から頑張って探す。
+
 Dockerコマンド
 ==============
 
@@ -164,3 +236,45 @@ Docker service
 上記全てを一括で::
 
 	$ docker system prune
+
+Swarmモード
+============
+
+Swarmモードでなければ使えないサブコマンドがいくつかある。
+特に ``docker secret`` が欲しい。
+
+docker swarm init
+-------------------
+
+Swarmクラスタを初期化してマネージャに昇格させる。
+初期化時にトークンが出力されるが、
+この値は後から取り出すことが可能なので忘れても良い。
+
+destroyやpurgeのような、Swarmクラスタを破棄するコマンドは用意されていない。
+なので自分でネットワークなどを破棄する::
+
+	$ docker swarm leave -f
+	$ docker network ls --filter label=com.docker.compose.project
+	$ docker network rm ...
+
+* `What is opposite of docker swarm init <https://stackoverflow.com/questions/48345602/what-is-opposite-of-docker-swarm-init>`_
+
+docker secret create
+---------------------
+
+シークレット等をファイルとして与えることができる::
+
+	$ docker secret create (name) (file)
+
+このファイルは、コンテナの **/run/secrets/(name)** にマウントされる。
+環境変数として渡すことはできなさそう。
+
+* `Docker ComposeのSecretsを試す <https://blue1st-tech.hateblo.jp/entry/2017/08/27/230546>`_
+* `Manage sensitive data with Docker secrets <https://docs.docker.com/engine/swarm/secrets/>`_
+
+docker-compose
+---------------
+
+composeはSwarmモードに対応していない。代わりに ``stack deploy`` を使う::
+
+	$ docker stack deploy --compose-file docker-compose.yml (name)

@@ -55,6 +55,13 @@ USS
 
 * `VSS RSS PSS USS の説明 <http://gntm-mdk.hatenadiary.com/entry/2015/01/21/231258>`_
 
+sar
+-------
+
+sarでも調べる
+
+	$ sar -pgdn -o sar.log 2 100
+
 スケジューラ
 ============
 

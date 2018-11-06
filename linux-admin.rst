@@ -9,9 +9,17 @@ Linux管理
 一般
 =====
 
-ランダム文字列生成:
+ランダム文字列生成::
 
 	$ openssl rand -hex 16
+
+tcpdump
+---------
+
+loopbackは通常、明記しないとキャプチャされない::
+
+	tcpdump [-i lo0] -s0 -A src net 10.1.2.0/24 and src port 443
+	tcpdump [-i lo0] -s0 -A host 10.1.2.202 or host 10.1.2.203 and port 443
 
 システム
 ========
