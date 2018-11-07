@@ -9,6 +9,13 @@ JavaScriptとかWeb
 用語など
 ========
 
+ES6 (ES2015)
+-------------
+
+* `ES6チートシート <https://postd.cc/es6-cheatsheet/>`_
+
+``let`` やアロー関数、``await`` などが使える。
+
 開発ツール
 ----------
 
