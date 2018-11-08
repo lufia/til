@@ -57,6 +57,17 @@ SolarisのDTraceみたいなもの。
 
 * `Linuxのディレクトリ構成(FHS) <http://www.7key.jp/computer/linux/directory.html>`_
 
+ディスクエラー時の対応
+----------------------
+
+I/Oエラーが発生した時にマウントオプションで挙動を変更できる。
+
+* `errors=remount-ro <https://www.shigemk2.com/entry/errors%3Dremount-ro>`_
+
+ファイルシステムのデフォルトは *tune2fs* でスーパーブロックを読めば参照できる::
+
+	$ sudo tune2fs -l /dev/sda1
+
 ネットワークデバイス
 --------------------
 

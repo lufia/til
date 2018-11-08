@@ -33,6 +33,7 @@ Gopher::
 * `The Plan 9 Assembler Handbook <https://taimen.jp/f/324>`_
 * `Introduction to the Compiler <https://github.com/golang/go/blob/master/src/cmd/compile/README.md>`_
 * `Go 2にむけて <https://www.ymotongpoo.com/works/goblog-ja/post/toward-go2/>`_
+* `How a Go Program Compiles down to Machine Code <https://getstream.io/blog/how-a-go-program-compiles-down-to-machine-code/>`_
 
 ツール類
 ========
