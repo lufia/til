@@ -4,6 +4,9 @@ Linuxパフォーマンス関連
 
 .. highlight: console
 
+* `Linux Performance <http://www.brendangregg.com/linuxperf.html>`_
+* `BCC - BPF Compiler Collection <https://github.com/iovisor/bcc>`_
+
 vmstatでざっくり調べる
 ======================
 
