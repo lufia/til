@@ -1,6 +1,25 @@
 CentOS関連
 ==========
 
+アップデートアナウンス
+-----------------------
+
+MLで流れてくるので購読しておくと便利。
+
+* `CentOS announce <https://lists.centos.org/mailman/listinfo/centos-announce>`_
+
+アドバイザリのクラス、何の略なのか書いているものを見たことがないけど、
+おそらくこんな扱いなんだろう。
+
+CESA
+	Security
+
+CEBA
+	Bug fix
+
+CEEA
+	Enhancement
+
 SCL(Software Collections)
 -------------------------
 
