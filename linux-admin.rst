@@ -25,6 +25,7 @@ loopbackは通常、明記しないとキャプチャされない::
 ========
 
 * `プロセスグループとセッショングループ <https://blog.a-know.me/entry/2016/10/27/082350>`_
+* `Ctrl+Cとkill -SIGINTの違いからLinuxプロセスグループを理解する <http://equj65.net/tech/linuxprocessgroup/>`_
 
 プロセスグループ
 -----------------
