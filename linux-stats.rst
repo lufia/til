@@ -65,6 +65,13 @@ sarでも調べる
 
 	$ sar -pgdn -o sar.log 2 100
 
+perf
+-------
+
+カーネルのどこで時間を使っているか調べるものらしい。
+
+* [perf, ftraceのしくみ](http://mmi.hatenablog.com/entry/2018/03/04/052249)
+
 スケジューラ
 ============
 
