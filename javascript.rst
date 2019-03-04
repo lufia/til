@@ -625,3 +625,8 @@ Syntax
 先に ``...others`` を書いてから続けて上書きしたいキー名を書く。
 
 * `スプレッド構文 <https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax>`_
+
+リンク
+======
+
+* `bit <https://bitsrc.io/>`_
