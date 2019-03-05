@@ -22,6 +22,10 @@ SSH鍵管理
 		#ForwardAgent yes
 		#IdentitiesOnly yes
 
+*Include* はブロック内で使うとブロックに取り込まれるので先頭に書いた方が良い。
+
+* `ssh_configのIncludeでハマった話 <https://tech.innovator.jp.net/entry/2018/05/24/143654>`_
+
 .ssh/conf.d/*.conf
 -------------------
 
