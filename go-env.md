@@ -31,6 +31,10 @@ cgoでCの関数へGoのポインタを渡した時のチェックを行うか�
 
 * [Go1.6でポインタをcgoの関数へ渡す際に発生するcgoCheckPointerを回避する方法](https://qiita.com/mattn/items/90c8558d5fff05a2ba0c)
 
+#### cpu.extension=off
+
+1.12より。
+
 #### efence
 
 `GODEBUG=efence=1` とすると、アロケータの動作を、全てのオブジェクトが個別のページに確保されて、かつリサイクルされないようなモードに切り替える。
@@ -98,6 +102,10 @@ GCのフェーズは
 #### tracebackancestors
 
 TODO
+
+#### tls13=1
+
+Go 1.12では、`GODEBUG=tls13=1` にするとTLS 1.3が有効になる。
 
 #### x509ignoreCN
 

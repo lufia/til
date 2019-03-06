@@ -26,7 +26,7 @@ SSH鍵管理
 
 * `ssh_configのIncludeでハマった話 <https://tech.innovator.jp.net/entry/2018/05/24/143654>`_
 
-.ssh/conf.d/*.conf
+.ssh/conf.d/\*.conf
 -------------------
 
 プロジェクト毎の設定を行う::
