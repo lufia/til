@@ -75,6 +75,10 @@ GCのフェーズは
 
 の3種類存在する。スイープは通常、バックグラウンドで行われる。
 
+#### madvdontneed
+
+Linuxにメモリ管理のヒントを与える。デフォルトではMADV_FREEだけど `GODEBUG=madvdontneed=1` とするとMADV_DONTNEED
+
 #### memprofilerate
 
 `GODEBUG=memprofilerate=0` の場合はメモリのプリファイリングを行わない。1以上の値をセットすると、`runtime.MemProfileRate`にそのままセットされる。
@@ -196,6 +200,8 @@ Goコンパイラなどツールチェインの場所。今は`go`のパスか�
 
 ビルドキャッシュの保存先ディレクトリを設定する。
 macOSの場合、デフォルトは *~/Library/Caches/go-build/* が使われる。
+
+offの場合はキャッシュしない。
 
 * [Command go](https://golang.org/cmd/go/)
 
