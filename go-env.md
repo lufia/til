@@ -163,6 +163,8 @@ Goのプログラムがpanicした場合やエラー終了した場合の出力�
 
 https://golang.org/cmd/go/
 
+`go help environment` でも良い
+
 ### GOARCH
 
 ビルド対象のアーキテクチャ名。
@@ -296,3 +298,12 @@ GO_CGOCHECKBYTES_TRY
 
 osusergoビルドタグ(os/user)
 netgoビルドタグ(net)
+
+### 環境変数ではないけどビルドフラグ
+
+* go build -gcflags='-m -l'
+* 下位レイヤーのコマンド(go tool compileなど)に渡すフラグ
+* go testでも使える
+* asmflagsなどもある
+
+https://qiita.com/ryskiwt/items/574a07c6235735afa5d7
