@@ -21,3 +21,11 @@ MySQL関連メモ
 * @@slow_launch_time
 * @@thread_cache_size
 * @@tmp_table_size
+
+雑多
+====
+
+パスワード
+----------
+
+* 環境変数 *MYSQL_PWD* に入れておくと自動で使われる
