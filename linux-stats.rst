@@ -65,6 +65,13 @@ sarでも調べる
 
 	$ sar -pgdn -o sar.log 2 100
 
+各種top
+-----------
+
+* top
+* htop
+* iotop
+
 perf
 -------
 
