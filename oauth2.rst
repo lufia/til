@@ -65,6 +65,7 @@ JWA (RFC 7518)
 
 * `どうしてリスクアセスメントせずにJWTをセッションに使っちゃうわけ？ <https://co3k.org/blog/why-do-you-use-jwt-for-session>`_
 * `JWT形式を採用したChatWorkのアクセストークンについて <https://creators-note.chatwork.com/entry/2018/09/25/132218>`_
+* `GoでOAuth2/OpenIDとJOSE <http://hde-advent-2015.hatenadiary.jp/entry/2015/12/02/095643>`_
 
 JWT関連Goパッケージ
 -------------------
