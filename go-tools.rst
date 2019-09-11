@@ -19,6 +19,11 @@ JavaScript
 	* `DOMを扱うサンプル <https://play.jsgo.io/github.com/dave/jstest>`_
 	* `画像圧縮サンプル <https://play.jsgo.io/github.com/dave/img>`_
 
+バージョン
+----------
+
+https://golang.org/dl/?mode=json&include=all
+
 SSHで ``go get`` する
 ---------------------
 
