@@ -205,6 +205,13 @@ Goの標準ライブラリや *golang.org/x* パッケージなどは修正BSD�
 
 * `Go言語のFunctional Option Pattern <https://qiita.com/weloan/items/56f1c7792088b5ede136>`_
 
+Wrapped return pattern
+-----------------------
+
+``SetFinalizer`` でゴルーチンを終了させるパターン。
+
+* `Go’s wrapped return pattern to clean up objects with background goroutines <https://medium.com/@cep21/b3454846a0d>`_
+
 flag
 =====
 
