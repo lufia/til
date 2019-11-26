@@ -123,6 +123,10 @@ package.json
 
 * `npm package.json日本語版取扱説明書 <http://liberty-technology.biz/PublicItems/npm/package.json.html>`_
 
+``dependencies`` または ``devDependencies`` は、ライブラリとして扱われなければどちらでもいい。
+
+* `ちゃんと使い分けてる? dependenciesいろいろ <https://qiita.com/cognitom/items/acc3ffcbca4c56cf2b95>`_
+
 webpack
 -------
 
@@ -409,6 +413,13 @@ Context API
 ------------
 
 * `Reactの新Context APIとRedux is deadはどう関係するのか？ <https://medium.com/@terrierscript/6d12a32f2f0c>`_
+
+React Router
+------------
+
+.. code-block:: console
+
+	$ npm install -D react-router-dom
 
 Redux
 =======
