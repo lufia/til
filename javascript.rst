@@ -166,6 +166,33 @@ developmentとproductionを分ける方法は公式ドキュメントに書い�
 		}
 	})
 
+また、開発中はAPIのモックを作りたい場合、
+以下のように書くと **/api/users** を書き換えることができる。
+
+	const users = [
+		{id: 1, name: 'test'},
+		{id: 2, name: 'xxx'}
+	]
+
+	{
+		devServer: {
+			before: (app, server) => {
+				app.get('/api/users', (req, res) => res.json(users))
+			}
+		}
+	}
+
+もっとまともなモックが欲しければ、*proxy* 設定を使って、
+例えば *json-server* など別のモックサーバに転送した方が良いかもしれない。
+
+	{
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3000'
+			}
+		}
+	}
+
 Babel
 -----
 
