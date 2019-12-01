@@ -139,14 +139,32 @@ webpack
 webpack自体は、JavaScriptファイルをバンドルするためのもので、
 普通は ``loader`` を使って他のトランスパイラを呼び出すことが多い。
 
-webpack-serve
--------------
+webpack-dev-server
+------------------
 
-*webpack-dev-server* の後継らしい。
+*webpack-serve* が後継になる予定は取り止めになったらしい。
 
 .. code-block::
 
-	$ npm install -D webpack-serve
+	$ npm install -D webpack-dev-server
+
+developmentとproductionを分ける方法は公式ドキュメントに書いてある。
+*webpack-merge* を使って、共通部分と固有部分を結合する。
+
+* `Production | webpack <https://webpack.js.org/guides/production/>`_
+
+後に書いてあるが、**webpack.dev.babel.js** のような名前にするとBabelでトランスパイルしてくれる。
+
+	import merge from 'webpack-merge'
+	import common from './webpack.common.babel.js'
+
+	export default merge(common, {
+		mode: 'development',
+		devtool: 'source-map',
+		devServer: {
+			historyApiFallback: true
+		}
+	})
 
 Babel
 -----
@@ -420,6 +438,29 @@ React Router
 .. code-block:: console
 
 	$ npm install -D react-router-dom
+
+*BrowserRouter* を使う場合、History APIによってURLが変わることになるが、
+そのままリロードすると当然ファイルが見つからず404 Not Foundを返してしまう。
+*webpack-dev-server* の設定に追加しておくとよい。
+
+.. code-block:: json
+
+	{
+		devServer: {
+			historyApiFallback: true
+		}
+	}
+
+Styled components
+-----------------
+
+.. code-block:: console
+
+	$ npm install -D styled-components
+
+当然だけど公式ドキュメントが一番詳しい。
+
+* `styled components <https://www.styled-components.com/>`_
 
 Redux
 =======
