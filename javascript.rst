@@ -478,6 +478,28 @@ React Router
 		}
 	}
 
+*BrowserRouter* 利用時に、リロードすると
+
+	Refused to execute script from 'http://localhost:8080/xxx/bundle.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled
+
+のようなエラーを吐いて動かない場合、
+これは本来 **/bundle.js** を読まなければならないところで
+*historyApiFallback* によってリダイレクトされてHTMLが返ってきてしまうため、
+意図したContent-Typeではないと **bundle.js** が弾かれたことによる。
+
+webpackの設定で、*output.publicPath* を設定するとよい。
+
+.. code-block:: json
+
+	export default {
+		output: {
+			filename: 'bundle.js',
+			publicPath: '/',
+			path: path.resolve(__dirname, 'static')
+		}
+	}
+
+
 Styled components
 -----------------
 
