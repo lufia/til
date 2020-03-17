@@ -109,7 +109,7 @@ TODO
 
 #### tls13=1
 
-Go 1.12では、`GODEBUG=tls13=1` にするとTLS 1.3が有効になる。
+Go 1.12では、`GODEBUG=tls13=1` にするとTLS 1.3が有効になる。Go 1.14からは無効にできない(オプション消えた?)。
 
 #### x509ignoreCN
 
@@ -219,6 +219,7 @@ GOHOSTOS
 GO386
 GOARM
 GOMIPS
+GOWASM
 
 GOROOT_FINAL
 GO_EXTLINK_ENABLED
@@ -242,6 +243,34 @@ GOSSAHASH
 GO_SSA_PHI_LOC_CUTOFF
 	0: enables sparse for all >=0
 	-1: disables sparse completely
+
+## Modules
+
+### GO111MODULE
+
+on, off, autoのどれか。
+
+### GOPROXY, GONOPROXY
+
+GOPROXY: GoProxy(athens)のURLを指定する。複数ある場合は優先度の高い順にカンマ区切り。デフォルトは `https://proxy.golang.org,direct`
+
+- https://blog.golang.org/modules2019
+
+GONOPROXY: GoProxyを通さないモジュールをカンマ区切りで列挙する。
+
+### GOSUMDB, GONOSUMDB
+
+GOPROXY: チェックサム(go.sum)DBのURLと公開鍵を指定する。
+
+GONOSUMDB: チェックサムDBを通さないモジュールをカンマ区切りで列挙する。
+
+### GOPRIVATE
+
+GONOPROXY, GONOSUMDBをまとめたもの。Globも使える？
+
+### GOINSECURE
+
+Goコマンドでモジュール取得時にHTTPSアクセス時に証明書の検査を行わないモジュールのリスト。複数ある場合はカンマ区切りでGlobも使える。directのみ？
 
 ## cgo
 
