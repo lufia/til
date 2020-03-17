@@ -40,6 +40,8 @@ Google Cloud SDK
 追加::
 
 	$ gcloud config configurations create $NAME
+	$ gcloud config configurations set project xx
+	$ gcloud config configurations set account xx@gmail.com
 
 切り替え::
 
@@ -87,6 +89,25 @@ Datastoreのバックアップ::
 リストア::
 
 	$ gcloud datastore import gs://bucket/**/*.overall_export_metadata
+
+Compute Engine
+==============
+
+シリアルポートに接続
+--------------------
+
+gcloudを使う::
+
+	gcloud compute --project=<project-id> \
+		connect-to-serial-port <instance-name> \
+		--zone=us-central1-a
+
+初回の場合、**~/.ssh/google_compute_engine** の生成が行われる。
+これで生成した公開鍵はGCEのメタデータに自動的に追加される。
+
+メタデータは *project-info* サブコマンドで確認できる::
+
+	gcloud compute project-info describe
 
 ストレージ
 ===========
