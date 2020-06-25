@@ -21,13 +21,6 @@ Google Cloud SDK
 
 * `Go Release Notes <https://cloud.google.com/appengine/docs/standard/go/release-notes>`_
 
-アカウント関連
---------------
-
-ログインする::
-
-	$ gcloud auth login
-
 コンフィグ関連
 --------------
 
@@ -40,8 +33,8 @@ Google Cloud SDK
 追加::
 
 	$ gcloud config configurations create $NAME
-	$ gcloud config configurations set project xx
-	$ gcloud config configurations set account xx@gmail.com
+	$ gcloud config set project xx
+	$ gcloud config set account xx@gmail.com
 
 切り替え::
 
@@ -50,6 +43,40 @@ Google Cloud SDK
 削除::
 
 	$ gcloud config configurations delete $NAME
+
+activeになっていないconfigurationは、 `gcloud CMD --configuration=NAME` で使える。
+デフォルトのproject-idから変更したい場合は、 `gcloud CMD --project PROJECT-ID` など。
+
+アカウント関連
+--------------
+
+ログインする::
+
+	$ gcloud auth login [--configuration=NAME]
+
+IAM
+===
+
+サービスアカウント
+------------------
+
+リスト取得::
+
+	% gcloud iam service-accounts list
+
+作成::
+
+	% gcloud iam service-accounts create NAME --display-name=NAME --description=TEXT
+
+サービスアカウントキーのリスト::
+
+	% gcloud iam service-accounts keys list \
+		--iam-account=NAME@PROJECT-ID.iam.gserviceaccount.com
+
+サービスアカウントキーの作成::
+
+	% gcloud iam service-accounts keys list create FILE \
+		--iam-account=NAME@PROJECT-ID.iam.gserviceaccount.com
 
 プロジェクト関連
 ----------------
@@ -65,6 +92,17 @@ Google Cloud SDK
 カレントプロジェクト設定::
 
 	$ gcloud config set project $PROJECT_ID
+
+ロールの割り当て
+----------------
+
+プロジェクトへのロール割り当て。
+
+割り当て::
+
+	% gcloud projects add-iam-policy-binding PROJECT-ID --member=serviceAccount:NAME@PROJECT-ID.iam.gserviceaccount.com --role=roles/ROLE
+
+リスト取得はできない？
 
 App Engine
 ==========
@@ -95,6 +133,10 @@ Compute Engine
 
 シリアルポートに接続
 --------------------
+
+インスタンス一覧::
+
+	gcloud compute [--configuration=NAME] instances list
 
 gcloudを使う::
 
