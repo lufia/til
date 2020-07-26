@@ -219,7 +219,9 @@ GOHOSTOS
 GO386
 GOARM
 GOMIPS
+GOMIPS64
 GOWASM
+GOPPC64
 
 GOROOT_FINAL
 GO_EXTLINK_ENABLED
@@ -336,3 +338,19 @@ netgoビルドタグ(net)
 * asmflagsなどもある
 
 https://qiita.com/ryskiwt/items/574a07c6235735afa5d7
+
+## dist
+
+### GO_TEST_TIMEOUT_SCALE
+
+* **all.bash** のテストは10分弱でタイムアウトする
+* この値を2にするとデフォルトのタイムアウト値を2倍する
+* デフォルトは1
+
+### GO_TEST_SHARDS
+
+### GO_TEST_SHORT
+
+### GOBOOTSTRAP_TOOLEXEC
+
+### GOROOT_BOOTSTRAP
