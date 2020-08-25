@@ -1,3 +1,12 @@
+## 一般的な環境変数
+
+この辺りは使える。
+
+* HTTP_PROXY
+* NO_PROXY
+* SSL_CERT_DIR
+	* macOSでは使えない
+
 ## 実行時に影響するもの
 
 これらはほとんど [runtime](https://golang.org/pkg/runtime/)でドキュメント化されている。
@@ -114,6 +123,7 @@ Go 1.12では、`GODEBUG=tls13=1` にするとTLS 1.3が有効になる。Go 1.1
 #### x509ignoreCN
 
 このパラメータは[crypto/x509](https://golang.org/pkg/crypto/x509/)パッケージで提供される。
+Go 1.15からデフォルトでセットされる。元の動作に戻したい場合は0をセットする。
 
 #### netdns
 
@@ -136,6 +146,12 @@ Go 1.12では、`GODEBUG=tls13=1` にするとTLS 1.3が有効になる。Go 1.1
 このパラメータは[net/http](https://golang.org/pkg/net/http/)パッケージで提供される。
 
 `GODEBUG=http2debug=1`とするとデバッグ出力が有効になる。`http2debug=2`の場合は、より詳細な出力がされる。
+
+#### modcacheunzipinplace
+
+Windowsでzipを展開したときにファイルスキャンが発生してAccess is deniedになるのを回避する？
+
+Go 1.15で追加。
 
 ### GOMAXPROCS
 
@@ -252,7 +268,7 @@ on, off, autoのどれか。
 
 ### GOPROXY, GONOPROXY
 
-GOPROXY: GoProxy(athens)のURLを指定する。複数ある場合は優先度の高い順にカンマ区切り。デフォルトは `https://proxy.golang.org,direct`
+GOPROXY: GoProxy(athens)のURLを指定する。複数ある場合は優先度の高い順に `,` または `|` 区切り。どのエラーで次のURLに切り替わるかが異なる。デフォルトは `https://proxy.golang.org,direct`
 
 - https://blog.golang.org/modules2019
 
