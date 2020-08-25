@@ -1,7 +1,11 @@
+==============
 PostgreSQLメモ
 ==============
 
 .. highlight:: sql
+
+使い方
+======
 
 データベースが存在するか調べる
 ------------------------------
@@ -72,3 +76,17 @@ Windows上のPHPから使う
 	[ExtensionList]
 	extension=php_pdo_pgsql.dll 
 	extension=php_pgsql.dll 
+
+パフォーマンス
+==============
+
+EXPLAIN
+--------
+
+* `EXPLAINの利用 <https://www.postgresql.jp/document/11.0/html/using-explain.html>`_
+
+統計情報
+--------
+
+https://www.postgresql.jp/document/9.6/html/planner-stats.html
+https://www.postgresql.jp/document/9.6/html/row-estimation-examples.html
