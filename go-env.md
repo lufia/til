@@ -88,6 +88,8 @@ GCのフェーズは
 
 Linuxにメモリ管理のヒントを与える。デフォルトではMADV_FREEだけど `GODEBUG=madvdontneed=1` とするとMADV_DONTNEED
 
+Go 1.16でMADV_DONTNEEDがデフォルトになったのでこのフラグは不要になった。
+
 #### memprofilerate
 
 `GODEBUG=memprofilerate=0` の場合はメモリのプリファイリングを行わない。1以上の値をセットすると、`runtime.MemProfileRate`にそのままセットされる。
@@ -125,6 +127,8 @@ Go 1.12では、`GODEBUG=tls13=1` にするとTLS 1.3が有効になる。Go 1.1
 このパラメータは[crypto/x509](https://golang.org/pkg/crypto/x509/)パッケージで提供される。
 Go 1.15からデフォルトでセットされる。元の動作に戻したい場合は0をセットする。
 
+`x509ignoreCN=0` はGo 1.17で削除される予定
+
 #### netdns
 
 このパラメータは[net](https://golang.org/pkg/net/)パッケージで提供される。
@@ -152,6 +156,12 @@ Go 1.15からデフォルトでセットされる。元の動作に戻したい�
 Windowsでzipを展開したときにファイルスキャンが発生してAccess is deniedになるのを回避する？
 
 Go 1.15で追加。
+
+#### inittrace
+
+`inittrace=1` すると`init()`のサマリをstderrに書き出す？
+
+Go 1.16で追加。
 
 ### GOMAXPROCS
 
@@ -290,6 +300,11 @@ GONOPROXY, GONOSUMDBをまとめたもの。Globも使える？
 
 Goコマンドでモジュール取得時にHTTPSアクセス時に証明書の検査を行わないモジュールのリスト。複数ある場合はカンマ区切りでGlobも使える。directのみ？
 
+### GOVCS
+go help vcs
+
+goコマンドが利用するVCSを制限する: git,hg,svn,bzr,fossil
+
 ## cgo
 
 `cgo`関連の環境変数。
@@ -316,6 +331,9 @@ GO_LDFLAGS
 GOBOOTSTRAP_TOOLEXEC
 	$GOROOT_BOOTSTRAP/bin/go install \
 		-gcflags=-l ... -toolexec=$GOBOOTSTRAP_TOOLEXEC
+
+TOOLEXEC_IMPORTPATH
+	-toolexec
 
 ### expiremental
 
