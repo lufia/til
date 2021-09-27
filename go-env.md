@@ -122,13 +122,6 @@ TODO
 
 Go 1.12では、`GODEBUG=tls13=1` にするとTLS 1.3が有効になる。Go 1.14からは無効にできない(オプション消えた?)。
 
-#### x509ignoreCN
-
-このパラメータは[crypto/x509](https://golang.org/pkg/crypto/x509/)パッケージで提供される。
-Go 1.15からデフォルトでセットされる。元の動作に戻したい場合は0をセットする。
-
-`x509ignoreCN=0` はGo 1.17で削除される予定
-
 #### netdns
 
 このパラメータは[net](https://golang.org/pkg/net/)パッケージで提供される。
