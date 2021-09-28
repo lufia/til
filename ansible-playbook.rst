@@ -145,3 +145,36 @@ hosts::
 これで、以下のようにすると確認ができた::
 
 	$ ansible servers -m ping -v
+
+差分を確認したい
+================
+
+Ansibleに ``--diff`` オプションがあり、これを与えるとplaybook適用前後の差分を表示する。
+このオプションは特に ``--check`` オプションと組み合わせると便利になる。
+
+.. code-block:: console
+
+実行例::
+
+	$ ansible-playbook --check --diff main.yml
+
+余談だけど、シークレットなどを含んだタスクを ``--diff`` で出力したくない場合、
+タスクに ``diff: yes|no`` を設定するとよい。
+
+``diff:`` の例::
+
+	- copy:
+	    src: config.env
+	    dest: .env
+	    mode: 0600
+
+また、 ``--check`` モードではコマンドを実行しないので、
+実行結果によって分岐するタスクがあると失敗する。
+この場合、 ``check_mode: yes|no`` を設定しておけば ``--check`` でも実行してくれる。
+
+``check_mode:`` の例::
+
+	- command: foo
+	  check_mode: no
+
+* `Ansibleのcheck_modeオプションでcheckモードを制御する <https://dev.classmethod.jp/articles/using_check_mode/>`_
